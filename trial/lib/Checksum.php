@@ -1,10 +1,10 @@
 <?php
 /**
- * AhkWeb uses checksum signature to ensure that API requests and responses shared between your 
- * application and AhkWeb over network have not been tampered with. We use SHA256 hashing and 
+ * CWP uses checksum signature to ensure that API requests and responses shared between your 
+ * application and CWP over network have not been tampered with. We use SHA256 hashing and 
  * AES128 encryption algorithm to ensure the safety of transaction data.
  *
- * @author     AHK WEB SOLUTIONS
+ * @author     CWP
  * @version    2.0
  * @link       https://upifast.in/
  */

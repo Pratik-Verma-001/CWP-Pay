@@ -47,7 +47,7 @@
     
 <div class="col-md-12 mt-5 mb-4 card p-4">    
 <h2>Video Tutorial</h2>
-<span>Video tutorial help to understand how to rechpay gateway work</span><hr>
+<span>Video tutorial help to understand how CWP gateway works</span><hr>
 
 
 </div>  

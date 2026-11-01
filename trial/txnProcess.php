@@ -17,13 +17,13 @@ $callback_url = "https://upifast.in/trial/txnResult.php";
 
 if($gateway_type=="Advanced"){
     
-$AHKWEB_TXN_URL='https://upifast.in/order/payment';
+$CWP_TXN_URL='https://upifast.in/order/payment';
 
 $upiuid = 's9a@paytm'; // Its Your Self UPI ID.
 
 }else if($gateway_type=="Robotics"){
 
-$AHKWEB_TXN_URL='https://upifast.in/order/paytm';
+$CWP_TXN_URL='https://upifast.in/order/paytm';
 
 $upiuid = 'paytma@paytm'; // Its Paytm Business UPI Unique ID.
 
@@ -31,7 +31,7 @@ $upiuid = 'paytma@paytm'; // Its Paytm Business UPI Unique ID.
 
 }else if($gateway_type=="Normal"){
     
-$AHKWEB_TXN_URL='https://upifast.in/order/process';   
+$CWP_TXN_URL='https://upifast.in/order/process';   
 
 $upiuid = 'paytmqrka@paytm';  // Its UPI Unique ID, (Url:http://example.com/UPIsAccounts).
 
@@ -54,7 +54,7 @@ $checkSum = CxrChecksum::generateSignature($paramList,$secret);
 </head>
 <body>
 	<center><h1>Please do not refresh this page...</h1></center>
-		<form method="post" action="<?php echo $AHKWEB_TXN_URL ?>" name="f1">
+		<form method="post" action="<?php echo $CWP_TXN_URL ?>" name="f1">
 		<table border="1">
 			<tbody>
 			<?php

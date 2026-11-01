@@ -16,7 +16,7 @@
 </form><br>
 <?php
 error_reporting(0);
-require_once('lib/AhkWeb_Config.php');
+require_once('lib/Config.php');
 require_once('lib/CxrChecksum.php');
 if(isset($_POST['orderId'])){
 $post = array(
@@ -26,7 +26,7 @@ $post = array(
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
-  CURLOPT_URL => $AHKWEB_STATUS_URL,
+  CURLOPT_URL => $CWP_STATUS_URL,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_CUSTOMREQUEST => "POST",

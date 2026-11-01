@@ -168,7 +168,7 @@ $email_message = "<html><head><title>Dear $name, Complete Your KYC Verification,
     <tr><td>Your Username: <b>$pan_no</b></td></tr>
     <tr><td>Your Password: <b>$rand</b></td></tr>
     <tr><td>Your Account Manager: <b>+91 ".support('mobile')."</b></td></tr>
-    <tr><td>Registration Form: <b><a href='".webdata('socket').base_url()."/docs/RechPayPaymentGatewayRegistrationForm.pdf'>Download</a></b></td></tr>
+    <tr><td>Registration Form: <b><a href='".webdata('socket').base_url()."/docs/CWPPaymentGatewayRegistrationForm.pdf'>Download</a></b></td></tr>
   
     <tr><td>I need the following details to submit to our acquiring bank to proceed with this process.</td></tr>
     <tr><td>

@@ -28,7 +28,7 @@ h4 {
                         <div class="single-footer-caption mb-50">
                             <div class="text-white">
                                 <h4 class="text-white">Quick Links</h4>
-                     <p class="call_text"><a href="docs/rechpay-terms_V2.docx" style="color: #ffffff;">Terms of Services</a></p>
+                     <p class="call_text"><a href="docs/cwp-terms_V2.docx" style="color: #ffffff;">Terms of Services</a></p>
                      <p class="call_text"><a href="#" style="color: #ffffff;">API Docs</a></p>
                      <p class="call_text"><a href="#Payments" style="color: #ffffff;">Payments</a></p>
                      <p class="call_text"><span style="color: #ffffff;">UPI</span></p>
