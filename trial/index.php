@@ -14,7 +14,7 @@
 <div class="col-md-4 mb-2 card p-4">    
 
           
-<img class="img-fluid" src="https://www.ahkwebsolutions.com/public/uploads/all/V1Nhk6tW8FrtCAzxbkDHdYy1x3LX4bj1toFV4AUs.svg" alt="alternative">
+<img class="img-fluid" src="../images/cwp-logo-light.png" alt="CWP Pay" style="max-height:60px;width:auto;">
 
 <img class="img-fluid mt-2" src="../images/step1-illus.svg">
 

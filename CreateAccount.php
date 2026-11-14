@@ -117,7 +117,7 @@ if($_GET['paystatus']=='success'){
     echo '<script>swal("Registered Mobile Number!", "Login Credentials Has Been Sent Successfully!", "success");</script>';
 }else{
     echo '<script>swal("Alert!", "Payment failed!", "error");</script>';
-    redirect('https://upifast.in/CreateAccount','1500');
+    redirect('https://cwp-pay.freedev.app/CreateAccount','1500');
 } }
 if(isset($_POST['create_account']) && 
 !empty($_POST['pan_no']) &&  

@@ -6,7 +6,7 @@
  *
  * @author     CWP
  * @version    2.0
- * @link       https://upifast.in/
+ * @link       https://cwp-pay.freedev.app/
  */
 
 class CxrChecksum{

@@ -100,7 +100,7 @@ body {
       <div class="header_section">
          <div class="container">
             <nav class="navbar navbar-dark bg-dark">
-               <a class="logo" href="index.php" style="width: 40%;"><img src="<?php echo webdata('company_logo');?>"></a>
+               <a class="logo" href="index.php" style="width: 40%;"><img src="<?php echo webdata('company_logo');?>" alt="CWP Pay" style="height:40px;width:auto;"></a>
                <div class="search_section">
                   <ul>
                      <li><a href="https://wa.me/91<?php echo support('mobile');?>"><img src="images/whatsapp.png" width="20"></a></li>

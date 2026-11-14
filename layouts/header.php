@@ -147,7 +147,7 @@ a {
     <div class="adminx-container">
       <nav class="navbar navbar-expand justify-content-between fixed-top">
         <div class="navbar-brand mb-1 mb-1 ml-2 d-md-block">
-		<img src="<?php echo webdata('company_logo');?>">
+		<img src="<?php echo webdata('company_logo');?>" alt="CWP Pay" style="height:40px;width:auto;">
         </div>
 
       

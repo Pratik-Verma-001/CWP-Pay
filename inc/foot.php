@@ -14,7 +14,7 @@ h4 {
                               <!-- logo -->
                              <div class="footer-logo">
                                  <a href="index.php">
-                                 <img src="<?php echo webdata('company_logo');?>">   
+                                 <img src="<?php echo webdata('company_logo');?>" alt="CWP Pay" style="height:40px;width:auto;">
                                  </a>
                              </div>
                              <div class="footer-tittle">

@@ -13,17 +13,17 @@ $cust_Email = $_POST['cust_Email'];
 $orderId = "TEST".time();
 $txnAmount = $_POST['txnAmount'];
 $txnNote = $_POST['txnNote'];
-$callback_url = "https://upifast.in/trial/txnResult.php";
+$callback_url = "https://cwp-pay.freedev.app/trial/txnResult.php";
 
 if($gateway_type=="Advanced"){
     
-$CWP_TXN_URL='https://upifast.in/order/payment';
+$CWP_TXN_URL='https://cwp-pay.freedev.app/order/payment';
 
 $upiuid = 's9a@paytm'; // Its Your Self UPI ID.
 
 }else if($gateway_type=="Robotics"){
 
-$CWP_TXN_URL='https://upifast.in/order/paytm';
+$CWP_TXN_URL='https://cwp-pay.freedev.app/order/paytm';
 
 $upiuid = 'paytma@paytm'; // Its Paytm Business UPI Unique ID.
 
@@ -31,7 +31,7 @@ $upiuid = 'paytma@paytm'; // Its Paytm Business UPI Unique ID.
 
 }else if($gateway_type=="Normal"){
     
-$CWP_TXN_URL='https://upifast.in/order/process';   
+$CWP_TXN_URL='https://cwp-pay.freedev.app/order/process';
 
 $upiuid = 'paytmqrka@paytm';  // Its UPI Unique ID, (Url:http://example.com/UPIsAccounts).
 

@@ -31,7 +31,7 @@ if(isset($_POST['plan']) && $_POST['plan'] =='basic'){
 		$keySecret = $activeKeyData['secret'];
 		$upiuid = $activeKeyData['upiuid'];
 		$request_id = rand(1111,9999).time();
-		$callback_url = "https://upifast.in/activePlan.php";
+		$callback_url = "https://cwp-pay.freedev.app/activePlan.php";
 		sql_query("UPDATE  `tb_partner` SET plan_txn_id='$request_id' WHERE id='".$userdata['id']."'");
 		$amount = 199;
 
@@ -58,7 +58,7 @@ if(isset($_POST['plan']) && $_POST['plan'] =='basic'){
                 </head>
                 <body>
                 	<center><h1>Please do not refresh this page...</h1></center>
-                		<form method="post" action="https://upifast.in/order/paytm" name="f1">
+				<form method="post" action="https://cwp-pay.freedev.app/order/paytm" name="f1">
                 		<table border="1">
                 			<tbody>';
                 			foreach($paramList as $name => $value) {
