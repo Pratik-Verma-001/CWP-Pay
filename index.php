@@ -1,355 +1,146 @@
 <?php
 require('inc/head.php');
+$wa = preg_replace('/\D/', '', support('mobile'));
 ?>
-         <div class="banner_section layout_padding">
-            <div id="my_slider" class="carousel slide" data-ride="carousel">
-               <div class="carousel-inner">
-                  <div class="carousel-item active">
-                     <div class="container">
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="taital_main">
-                                 <h4 class="banner_taital" style="font-size:30px"><span class="font_size_80">No Transaction Charge<br>Instant Settlements</span></h4>
-                                 <p class="banner_text">Accept Payments Directly to your Bank Account At 0% Transaction Fee for businesses UPI payment gateway, QR code checkout, deep linking APIs, API for bulk UPI payments and more...</p>
-                                 <div class="book_bt"><a href="CreateAccount">Get Started</a></div>
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div><img src="images/jiffy-trading-app.svg" class="image_1"></div>
-                           </div>
-                        </div>
-                        <!--div class="button_main">
-						<button class="all_text">All</button>
-						<input type="text" class="Enter_text" placeholder="Enter keywords" name="">
-						<button class="search_text">Search</button>
-						</div-->
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="container">
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="taital_main">
-                                 <h4 class="banner_taital"><span class="font_size_80">Web UPI Payment<br> Integration</span></h4>
-                                 <p class="banner_text">To accept payments via UPI Apps like PhonePe, Google Pay, Paytm etc, you can integrate with a payment gateway that supports UPI flow.</p>
-                                 <div class="book_bt"><a href="CreateAccount">Get Started</a></div>
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div><img src="images/step1-illus.svg" class="image_1 pl-5" width="450"></div>
-                           </div>
-                        </div>
-                        <!--div class="button_main">
-						<button class="all_text">All</button>
-						<input type="text" class="Enter_text" placeholder="Enter keywords" name="">
-						<button class="search_text">Search</button>
-						</div-->
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="container">
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="taital_main">
-                                 <h4 class="banner_taital"><span class="font_size_80">Payments Collect<br>UPI QR Codes</span></h4>
-                                 <p class="banner_text">UPI Quick Response (QR) Code is a unique graphics code that helps to accept UPI payments when scanned with a compatible mobile phone.</p>
-                                 <div class="book_bt"><a href="CreateAccount">Get Started</a></div>
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div><img src="images/Machine - UP.svg" class="image_1" width="500"></div>
-                           </div>
-                        </div>
-                        <!--div class="button_main">
-						<button class="all_text">All</button>
-						<input type="text" class="Enter_text" placeholder="Enter keywords" name="">
-						<button class="search_text">Search</button>
-						</div-->
-					</div>
-                  </div>
-               </div>
-               <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
-               <i class=""><img src="images/left-icon.png"></i>
-               </a>
-               <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
-               <i class=""><img src="images/right-icon.png"></i>
-               </a>
-            </div>
-         </div>
-         <!--banner section end -->
+<section class="hero" id="Home">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Take UPI payments with <span class="nofee">no fee</span> on every rupee.</h1>
+      <p class="hero-sub">Money goes straight to your own bank account. CWP Pay watches for each payment, matches it to the order, and marks it paid. No settlement wait, no cut.</p>
+      <div class="hero-actions">
+        <a class="btn-cwp" href="CreateAccount?trial=true">Start 3-day free trial</a>
+        <a class="btn-cwp btn-cwp--ghost" href="trial/index.php">Try the demo</a>
       </div>
-      <!--header section end -->
-      <!-- beauty product section start -->
-      <div class="sign-new-up">
-         <div class="container">
-            <div class="row"  id="Payments">
-                
-			<div class="col-lg-12 col-sm-12 text-center mt-5">
-            <h1 class="text-white" style="font-size: 50px;">Accept Payments<br>Directly to your Bank Account<br>At 0% Transaction Fee
-</h1>
-            <span class="text-white" style="font-size: 20px;">Your customers can pay directly to your<br>Bank A/C using BHIM or any other UPI Apps</span><br>
-			<a href="CreateAccount"><button class="btn btn-primary-outline mt-3">Sign Up for Free  </button></a>
-			</div>
-			   
-               <div class="col-lg-12 col-sm-12">
-                <img src="images/upi-illus.svg" class="image_3">
-               </div>
-               <!--div class="col-lg-8 col-sm-12 ">
-                  <div class="beauty_box_1 mt-5"">
-                     <h1 class="bed_text_1">Web UPI Payment Gateway API Integration</h1>
-                     <div><img src="images/upi_intent_final_2x.webp" class="image_3" width="400"></div>
-                     <div class="seemore_bt_1"><a href="#">Integration</a></div>
-                  </div>
-               </div-->
-            </div>
-         </div>
+      <p class="hero-note">No card needed. Works with PhonePe, Google Pay, Paytm and every other UPI app.</p>
+    </div>
+    <div class="ledger" id="ledger" aria-label="Example of payments being matched">
+      <div class="ledger-head">
+        <span>Today, live matching</span>
+        <button class="ledger-replay" type="button">Replay</button>
       </div>
-      <!-- beauty product section end -->
-      <!-- product section start -->
-      <div class="product_section layout_padding background-1" id="Developers">
-         <div class="container">
-            <h1 class="text-white text-center" style="font-size: 50px;">Web UPI Payment Gateway Integration</h1>
-            <p class="text-white text-center" style="font-size: 15px;">UPI Quick Response (QR) Code is a unique graphics code that helps to accept UPI payments when scanned with a compatible web and mobile phone.</p>
-            <div class="product_section_1">
-               <div class="row">
-                  <div class="col-sm-12 mb-3">
-                    <img src="images/web-developer-master-tn.svg" class="image_8" style="width: 50%;">
-                  </div>
-               </div>
-            </div>
-         </div>
+      <div class="ledger-total">
+        <small>Received in your bank</small>
+        <strong id="ledger-total">&#8377;0</strong>
       </div>
-      <!-- product section end -->
-      
-      <!-- newsletter section start -->
-      <!--div class="layout_padding price">
-         <div class="container">
-            <h1 class="newsletter_taital"  id="Pricing">Pricing</h1>
-            <p class="newsletter_text">No setup fee. No recurring fee. Offer Valid Till 31st March 2021</p>
-            <div class="row mb-3">
-             <div class="col-lg-12 col-sm-12"> 
-<?php
-$query = sql_query("SELECT * FROM `tb_slab` WHERE id='".webdata('slab_id')."' ");
-$rows = sql_fetch_array($query);
-$imps = json_decode($rows['imps'],true);
-$neft = json_decode($rows['neft'],true);
-?>
-<table class="table">
-  <tbody>
-    <tr class="text-white text-center" style="font-size: 1rem;background-color: #006cbf!important; ">
-      <td>Payment Instrument</td>
-      <td>Merchant Discount Rate (MDR)</td>
-      <td>Monthly Limit</td>
-    </tr>
-	 <tr class="text-white text-center" style="font-size: 1rem;">
-      <td>UPI Collect</td>
-      <td><i style="color:white;text-decoration:line-through"><span style="font-size:15px;color:white;"><b>1.95%</b></span></i> <?php echo $rows['upi'];?>%</td>
-      <td>Unlimited</td>
-    </tr>
-	<tr class="text-white text-center" style="font-size: 1rem;">
-      <td>Virtual Account</td>
-      <td><i style="color:white;text-decoration:line-through"><span style="font-size:15px;color:white;"><b>1.95%</b></span></i> <?php echo $rows['van'];?>%</td>
-      <td>Unlimited</td>
-    </tr>
-	<tr class="text-white text-center" style="font-size: 1rem;">
-      <td>Instant Setelment</td>
-      <td>Min Rs.<?php echo $imps['slab1'];?>, Max Rs.<?php echo $imps['slab3'];?></td>
-      <td>Upto Rs.<?php echo moneyformat(3000000);?></td>
-    </tr>
-	<tr class="text-white text-center" style="font-size: 1rem;">
-      <td>Normal Setelment</td>
-      <td>Rs.<?php echo $neft['slab1'];?></td>
-      <td>Unlimited</td>
-    </tr>
-  </tbody>
-</table>
-			 </div>
-            </div>
-         </div>
-      </div-->
-      
-            <!-- product section end -->
-<style>
-.pricing-h3{
-    color: #fff;
-    background: #1acc8d;
-    border-radius: .55rem;
-}
+      <ul class="ledger-rows" id="ledger-rows"></ul>
+      <p class="ledger-foot">Sample data to show how matching works.</p>
+    </div>
+  </div>
+</section>
 
-
-.pricing{
-    border-radius: .55rem;
-}
-</style>      
-      <!-- newsletter section start -->
-      <div class="layout_padding price">
-         <div class="container">
-          <div class="row text-center"  id="Pricing">
-              
-          <div class="col-md-12 mt-4 mb-5">
-             <div class="row" data-aos="fade-left">
-
-          <div class="col-lg-6 col-md-8">
-            <div class="card pricing" data-aos="zoom-in" data-aos-delay="100">
-              <h3 class="pricing-h3 p-3" style="background: #4e1acc;" ><b>Start your Free Trial</b><br>
-              <span>₹0</span><br>
-              <span>For 3 Days</span>
-              </h3>
-              <ul class="text-info pt-1">
-                <b>0 Transaction Fee</b><br>
-                <b>No Monthly Limit of usage</b><br>
-                <b>Realtime Bank Settlement</b><br>
-                <b>No Transactions Limit</b><br>
-                <b>No Limit In Adding UPI</b><br>
-                <b>Hassle Free Setup (Charge Applicable if take support)</b><br>
-                <b>Clean Documentation with Integration Free Kit </b><br>
-                <b class="text-danger">Migration Assistance</b><br>
-                <b>24*7 Whatsapp Support</b><br>
-                <b class="text-danger">Transaction Alert Via SMS</b>
-              </ul>
-              <div class="p-4">
-                <button class="btn btn-primary btn-block" style="background: #4e1acc;"  onclick="window.location.href = 'CreateAccount?trial=true';">Active Trial</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-8">
-            <div class="card pricing" data-aos="zoom-in" data-aos-delay="100">
-              <h3 class="pricing-h3 p-3" style="background: #4e1acc;" ><b>Standard</b><br>
-              <span>₹199</span><br>
-              <span>For 30 Days</span>
-              </h3>
-              <ul class="text-info pt-1">
-                <b>0 Transaction Fee</b><br>
-                <b>No Monthly Limit of usage</b><br>
-                <b>Realtime Bank Settlement</b><br>
-                <b>No Transactions Limit</b><br>
-                <b>No Limit In Adding UPI</b><br>
-                <b>Hassle Free Setup (Charge Applicable if take support)</b><br>
-                <b>Clean Documentation with Integration Free Kit </b><br>
-                <b class="text-danger">Migration Assistance</b><br>
-                <b>24*7 Whatsapp Support</b><br>
-                <b class="text-danger">Transaction Alert Via SMS</b>
-              </ul>
-              <div class="p-4">
-                <button class="btn btn-primary btn-block" style="background: #4e1acc;"  onclick="window.location.href = 'CreateAccount';">Buy Now</button>
-              </div>
-            </div>
-          </div>
-
-          <!--<div class="col-lg-3 col-md-6">-->
-          <!--  <div class="card pricing" data-aos="zoom-in" data-aos-delay="100">-->
-          <!--    <h3 class="pricing-h3 p-3"><b>Enterprise</b><br>-->
-          <!--    <span>₹499</span><br>-->
-          <!--    <span>For 28 Days</span>-->
-          <!--    </h3>-->
-          <!--    <ul class="text-info pt-1">-->
-          <!--      <b>0 Transaction Fee</b><br>-->
-          <!--      <b>Realtime Bank Settlement</b><br>-->
-          <!--      <b>No Transactions Limit</b><br>-->
-          <!--      <b>No Limit In Adding UPI</b><br>-->
-          <!--      <b>Zero Setup Charge</b><br>-->
-          <!--      <b>Migration Assistance</b><br>-->
-          <!--      <b>24*7 Whatsapp Support</b><br>-->
-          <!--      <b>Transaction Alert Via SMS</b>-->
-          <!--    </ul>-->
-          <!--    <div class="p-4">-->
-          <!--      <button class="btn btn-success btn-block" onclick="window.location.href = 'https://wa.me/1<?php echo support('mobile');?>';">Buy Now</button>-->
-          <!--    </div>-->
-          <!--  </div>-->
-          <!--</div>-->
-          <!--<div class="col-lg-3 col-md-6">-->
-          <!--  <div class="card pricing" data-aos="zoom-in" data-aos-delay="100">-->
-          <!--    <h3 class="pricing-h3 p-3" style="background: #4e1acc;" ><b>Standard +</b><br>-->
-          <!--    <span>₹3999</span><br>-->
-          <!--    <span>For 365 Days</span>-->
-          <!--    </h3>-->
-          <!--    <ul class="text-info pt-1">-->
-          <!--      <b>0 Transaction Fee</b><br>-->
-          <!--      <b>Realtime Bank Settlement</b><br>-->
-          <!--      <b>No Transactions Limit</b><br>-->
-          <!--      <b>No Limit In Adding UPI</b><br>-->
-          <!--      <b>Zero Setup Charge</b><br>-->
-          <!--      <b class="text-danger">Migration Assistance</b><br>-->
-          <!--      <b>24*7 Whatsapp Support</b><br>-->
-          <!--      <b class="text-danger">Transaction Alert Via SMS</b>-->
-          <!--    </ul>-->
-          <!--    <div class="p-4">-->
-          <!--      <button class="btn btn-primary btn-block" style="background: #4e1acc;"  onclick="window.location.href = 'https://wa.me/1<?php echo support('mobile');?>';">Buy Now</button>-->
-          <!--    </div>-->
-          <!--  </div>-->
-          <!--</div>-->
-          <!--<div class="col-lg-3 col-md-6">-->
-          <!--  <div class="card pricing" data-aos="zoom-in" data-aos-delay="100">-->
-          <!--    <h3 class="pricing-h3 p-3"><b>Enterprise</b><br>-->
-          <!--    <span>₹4999</span><br>-->
-          <!--    <span>For 365 Days</span>-->
-          <!--    </h3>-->
-          <!--    <ul class="text-info pt-1">-->
-          <!--      <b>0 Transaction Fee</b><br>-->
-          <!--      <b>Realtime Bank Settlement</b><br>-->
-          <!--      <b>No Transactions Limit</b><br>-->
-          <!--      <b>No Limit In Adding UPI</b><br>-->
-          <!--      <b>Zero Setup Charge</b><br>-->
-          <!--      <b>Migration Assistance</b><br>-->
-          <!--      <b>24*7 Whatsapp Support</b><br>-->
-          <!--      <b>Transaction Alert Via SMS</b>-->
-          <!--    </ul>-->
-          <!--    <div class="p-4">-->
-          <!--      <button class="btn btn-success btn-block" onclick="window.location.href = 'https://wa.me/1<?php echo support('mobile');?>';">Buy Now</button>-->
-          <!--    </div>-->
-          <!--  </div>-->
-          <!--</div>          -->
-
-       </div> 
-          </div>    
-              
-              
-	<div class="col-xl-12 text-center">
-		<h1 class="newsletter_taital">Accepting Payments Made Easy, Simple &amp; FREE!</h2>
-		<p class="newsletter_text" style="font-size: 12px;">The logos below are the property of respective trademark owners. All the below apps support BHIM-UPI.</p>
-	</div>
-<style>
-.p-border{
- border-top-left-radius: 25px;    
- border-bottom-right-radius: 25px;   
-}    
-</style>	
-	<div class="col-md-3 mb-4">
-		<img src="images/bank_gpay.jpg" class="p-border"
-   			alt=""
-   			srcset=""></div>
-		<div class="col-md-3 mb-4">
-			<img src="images/bank_phonepe.jpg" class="p-border"
-   				alt=""
-   				srcset=""></div>
-			<div class="col-md-3 mb-4">
-				<img src="images/bank_freecharge.jpg" class="p-border"
-   					alt=""
-   					srcset=""></div>
-				<div class="col-md-3 mb-4">
-					<img src="images/bank_bhim_upi.jpg" class="p-border"
-   						alt=""
-   						srcset=""></div>
-					<div class="col-md-3 mb-4">
-						<img src="images/bank_sbi.jpg" class="p-border"
-   							alt=""
-   							srcset=""></div>
-						<div class="col-md-3 mb-4">
-							<img src="images/bank_airtel.jpg" class="p-border"
-   								alt=""
-   								srcset=""></div>
-							<div class="col-md-3 mb-4">
-								<img src="images/bank_amazon_pay.jpg" class="p-border"
-   									alt=""
-   									srcset=""></div>
-								<div class="col-md-3 mb-4">
-									<img src="images/bank_payzapp.jpg"  class="p-border"
-   										alt=""
-   										srcset=""></div>
-								</div>
-         </div>
+<section class="section savings" id="savings">
+  <div class="wrap savings-grid">
+    <div>
+      <h2>See what a gateway fee costs you.</h2>
+      <p class="section-lead">Most gateways keep a slice of every sale. Move the slider to your monthly sales and see what stays with you.</p>
+    </div>
+    <div class="calc">
+      <div class="calc-row">
+        <label for="calc-sales">Monthly sales</label>
+        <output id="calc-sales-out" for="calc-sales">&#8377;2,00,000</output>
       </div>
-      <!-- newsletter section end -->
+      <input id="calc-sales" type="range" min="10000" max="2000000" step="10000" value="200000">
+      <fieldset>
+        <legend>Fee your gateway charges now</legend>
+        <div class="rates">
+          <label><input type="radio" name="rate" value="1" checked><span>1%</span></label>
+          <label><input type="radio" name="rate" value="1.5"><span>1.5%</span></label>
+          <label><input type="radio" name="rate" value="2"><span>2%</span></label>
+          <label><input type="radio" name="rate" value="2.5"><span>2.5%</span></label>
+        </div>
+      </fieldset>
+      <div class="bars" aria-hidden="true">
+        <div class="bar-line"><div class="top"><span>Your current gateway</span><b id="calc-fee-out">&#8377;0</b></div><div class="track"><i id="calc-fee-bar"></i></div></div>
+        <div class="bar-line"><div class="top"><span>CWP Pay fee</span><b>&#8377;0</b></div><div class="track"><i class="cwp"></i></div></div>
+      </div>
+      <div class="keep" id="calc-keep">
+        <strong id="calc-save-out">&#8377;0</strong>
+        <p id="calc-save-note">more stays with you each month, minus the &#8377;199 plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <h2>Paid in three steps.</h2>
+    <ol class="steps">
+      <li>
+        <h3>Add your UPI</h3>
+        <p>Connect your UPI ID or Paytm Business account. Your customers pay you, not us.</p>
+      </li>
+      <li>
+        <h3>Create an order</h3>
+        <p>Call the API or use a QR code. Each order gets a unique amount and a payment link.</p>
+      </li>
+      <li>
+        <h3>We confirm it</h3>
+        <p>CWP Pay checks the payment, matches it to the order and sends your webhook within seconds.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section apps">
+  <div class="wrap">
+    <h2>Customers pay with the app they already use.</h2>
+    <ul class="apps-list">
+      <li><img src="images/bank_gpay.jpg" alt="Google Pay"></li>
+      <li><img src="images/bank_phonepe.jpg" alt="PhonePe"></li>
+      <li><img src="images/bank_bhim_upi.jpg" alt="BHIM UPI"></li>
+      <li><img src="images/bank_freecharge.jpg" alt="Freecharge"></li>
+      <li><img src="images/bank_sbi.jpg" alt="SBI Pay"></li>
+      <li><img src="images/bank_airtel.jpg" alt="Airtel Thanks"></li>
+      <li><img src="images/bank_amazon_pay.jpg" alt="Amazon Pay"></li>
+      <li><img src="images/bank_payzapp.jpg" alt="PayZapp"></li>
+    </ul>
+    <small>Logos belong to their owners. All of these apps support BHIM UPI.</small>
+  </div>
+</section>
+
+<section class="section pricing" id="Pricing">
+  <div class="wrap">
+    <h2>One plan. No fee per payment.</h2>
+    <p class="section-lead">No setup fee and no limit on payments. Pick the trial to try everything first.</p>
+    <div class="plans">
+      <article class="plan">
+        <h3>Free trial</h3>
+        <p class="price">&#8377;0<small>for 3 days</small></p>
+        <ul>
+          <li>0% transaction fee</li>
+          <li>Unlimited payments and UPI IDs</li>
+          <li>Real-time bank settlement</li>
+          <li>Docs and integration kit</li>
+          <li>WhatsApp support</li>
+        </ul>
+        <a class="btn-cwp btn-cwp--ghost" href="CreateAccount?trial=true">Start free trial</a>
+      </article>
+      <article class="plan plan--main">
+        <span class="flag">Most chosen</span>
+        <h3>Standard</h3>
+        <p class="price">&#8377;199<small>for 30 days</small></p>
+        <ul>
+          <li>0% transaction fee</li>
+          <li>Unlimited payments and UPI IDs</li>
+          <li>Real-time bank settlement</li>
+          <li>Docs and integration kit</li>
+          <li>WhatsApp support</li>
+          <li>Migration help and SMS alerts</li>
+        </ul>
+        <a class="btn-cwp" href="CreateAccount">Buy Standard</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section support" id="Support">
+  <div class="wrap">
+    <div>
+      <h2>Stuck? Message us on WhatsApp.</h2>
+      <p>Setup help is a message away, every day. Tell us what you are building and we will point you to the right step.</p>
+    </div>
+    <a class="btn-cwp btn-cwp--light" href="https://wa.me/91<?php echo htmlspecialchars($wa);?>">Chat on WhatsApp</a>
+  </div>
+</section>
 <?php
 require('inc/foot.php');
-?>     

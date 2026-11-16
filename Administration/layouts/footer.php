@@ -29,5 +29,6 @@ function copyToClipboard(element) {
 }   
 </script>
   
-  </body>
+  <script src="../js/cwp-panel.js"></script>
+</body>
 </html>

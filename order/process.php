@@ -41,7 +41,7 @@ require_once('../system/function.php');
     padding: 0;
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    background-image: linear-gradient(90deg, #085bac, #11c4cb);
+    background-image: linear-gradient(90deg, #14705f, #2fd69a);
 }
 .adminx-sidebar {
     /* background: #fff; */
@@ -53,7 +53,7 @@ require_once('../system/function.php');
     z-index: 1040;
     -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
-    background-image: linear-gradient(180deg, #095fae, #11c4cb);
+    background-image: linear-gradient(180deg, #14705f, #2fd69a);
 }
 .sidebar-nav-link {
     padding: .5rem 1.5rem;
@@ -77,7 +77,7 @@ require_once('../system/function.php');
     margin: 0;
     padding: .5rem 0;
     font-size: .875rem;
-    background-image: linear-gradient(180deg, #095fae, #11c4cb);
+    background-image: linear-gradient(180deg, #14705f, #2fd69a);
 }
 a:hover {
   color: white;
@@ -86,26 +86,26 @@ a:hover {
 border-radius: 5px;	
 }
 .sp-background {
-  background: #0857ab;
+  background: #14705f;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
 }
 .card-nblue {
- background: #011f3f;	
+ background: #0c2623;	
 }
 .table td, .table th {
     padding: .75rem;
     vertical-align: top;
-    border-top: 1px solid #0e98be;
+    border-top: 1px solid #14705f;
 }
 
 .bg-mix{
-  background: linear-gradient(#0857ab,#11c9cc);	
+  background: linear-gradient(#14705f,#2fd69a);	
 }
 .table-hover tbody tr:hover {
-    background-color: #011f3f;
+    background-color: #0c2623;
     color: white;
 }
 </style>

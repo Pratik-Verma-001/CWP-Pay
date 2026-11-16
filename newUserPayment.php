@@ -57,7 +57,7 @@ $sms_status = SendSMS($mobile,$msg);
 
 $email_message = "<html><head><title>Login Credentials</title></head><body style='font-family: Arial, Helvetica, sans-serif;'>
     <table style='border:1px solid #ccc;border-radius:8px;' cellpadding='8'>
-    <tr><td><img src='" .webdata("company_logo"). "' width='100' style='background: linear-gradient(#0857ab,#11c9cc); border-radius: 10px; padding: 5px;'/></td></tr>
+    <tr><td><img src='" .webdata("company_logo"). "' width='100' style='background: linear-gradient(#14705f,#2fd69a); border-radius: 10px; padding: 5px;'/></td></tr>
     <tr><td style>Dear " . $name . "</td></tr>
     <tr><td>Your Username: <b>$pan_no</b></td></tr>
     <tr><td>Your Password: <b>$rand</b></td></tr>
@@ -78,7 +78,7 @@ $sms_status = SendSMS($mobile,$msg);
 
 $email_message = "<html><head><title>Dear $name, Complete Your KYC Verification,</title></head><body style='font-family: Arial, Helvetica, sans-serif;'>
     <table style='border:1px solid #ccc;border-radius:8px;' cellpadding='8'>
-    <tr><td><img src='" .webdata("company_logo"). "' width='100' style='background: linear-gradient(#0857ab,#11c9cc); border-radius: 10px; padding: 5px;'/></td></tr>
+    <tr><td><img src='" .webdata("company_logo"). "' width='100' style='background: linear-gradient(#14705f,#2fd69a); border-radius: 10px; padding: 5px;'/></td></tr>
     <tr><td style>Dear " . $name . "</td></tr>
     <tr><td style>Greetings from " . webdata('company_name') . "..!!</td></tr>
     <tr><td>Your Account Manager: <b>+91 ".support('mobile')."</b></td></tr>

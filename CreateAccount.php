@@ -3,114 +3,22 @@ require_once('system/function.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title><?php echo webdata('company_name');?> | Create Account</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="assets/dist/css/adminx.css" media="screen" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-	<script src="assets/dist/js/historry.js"></script>
-	<script src="assets/dist/js/sweetalert.min.js"></script>
+<head>
+  <title><?php echo htmlspecialchars(webdata('company_name'));?> | Create account</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c2623">
+  <link rel="icon" href="<?php echo htmlspecialchars(webdata('web_fav'));?>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/cwp-base.css">
+  <link rel="stylesheet" href="css/cwp-auth.css">
+  <script src="assets/dist/js/historry.js"></script>
+  <script src="assets/dist/js/sweetalert.min.js"></script>
+</head>
+<body class="cwp-body">
 
-<style>
-.navbar-brand-image {
-    width: 3.875rem;
-    height: 1.875rem;
-}    
-.brand-logo{
-   background-image: url('images/brand.png');
-   background-size: contain; 
-   background-repeat: no-repeat;
-   background-position: 
-   center;
-   height: 40px; width: 120px 
-    
-}
-
-.small-logo {
-    /* height: 60px; */
-    width: 150px;
-}
-
-.adminx-container .navbar {
-    font-size: .875rem;
-    /* background-color: #000; */
-    height: 3.5rem;
-    padding: 0;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    background-image: linear-gradient(90deg, #085bac, #11c4cb);
-}
-.adminx-sidebar {
-    /* background: #fff; */
-    position: fixed;
-    width: 260px;
-    top: 3.5rem;
-    bottom: 0;
-    left: 0;
-    z-index: 1040;
-    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
-    background-image: linear-gradient(180deg, #095fae, #11c4cb);
-}
-.sidebar-nav-link {
-    padding: .5rem 1.5rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    color: #ffffff;
-}
-.sidebar-nav-link.active {
-    color: #ffffff;
-}
-.sidebar-sub-nav {
-    list-style-type: none;
-    margin: 0;
-    padding: .5rem 0;
-    font-size: .875rem;
-    background-image: linear-gradient(180deg, #095fae, #11c4cb);
-}
-a:hover {
-  color: white;
-}
-.card{
-border-radius: 5px;	
-}
-.sp-background {
-  background:#0857ab;
-  background-size: cover;  
-}
-.card-nblue {
- background: #011f3f;	
-}
-.table td, .table th {
-    padding: .75rem;
-    vertical-align: top;
-    border-top: 1px solid #0e98be;
-}
-
-.bg-mix{
-  background: linear-gradient(#0857ab,#11c9cc);	
-}
-.table-hover tbody tr:hover {
-    background-color: #011f3f;
-    color: white;
-}
-</style>
-
-  </head>
-<body class="sp-background">
-
-<div class="p-4">
-<div class="container">	
-<div class="row justify-content-center">
 <?php
 if(isset($_GET['paystatus'])){
 if($_GET['paystatus']=='success'){
@@ -168,53 +76,60 @@ if($query){
 	
 }
 ?>
-<div class="col-md-6 card  card-nblue p-4 mb-5">	
-<h4 class="text-white text-center">Create Account</h4>
-  <form action="" method="post">
-    <div class="form-group">
-      <label class="text-white">PAN Number</label>
-      <input type="text" class="form-control form-control-sm" id="pan_no" minlength="12" maxlength="10"  name="pan_no" onchange="panValidation(this.value)" placeholder="PAN Number" required>
+<div class="auth">
+  <aside class="auth-side">
+    <a href="index.php" aria-label="CWP Pay home"><img src="images/cwp-logo-dark.svg" alt="CWP Pay" width="130" height="40"></a>
+    <div>
+      <h1>Start taking UPI payments today.</h1>
+      <p>Create an account, add your UPI and test with the free 3-day trial.</p>
+      <ul class="auth-points"><li>No card needed for the trial</li><li>0% fee on every payment</li><li>WhatsApp support</li></ul>
     </div>
-    <div class="form-group">
-      <label class="text-white">Name as per PAN</label>
-      <input type="text" class="form-control form-control-sm" maxlength="50" name="name" placeholder="Name as per PAN" required>
+    <a class="auth-back" href="index.php">&larr; Back to website</a>
+  </aside>
+  <main class="auth-main">
+    <div class="auth-card auth-card--wide">
+      <h2>Create your account</h2>
+      <p class="auth-sub">It takes about two minutes. Your PAN number becomes your first password.</p>
+      <form class="auth-form" action="" method="post">
+      <div class="field">
+        <label for="pan_no">PAN number</label>
+        <input type="text" id="pan_no" name="pan_no" placeholder="ABCDE1234F" required maxlength="10" minlength="10" pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]" autocapitalize="characters" autocomplete="off" onchange="panValidation(this.value)">
+      </div>
+      <div class="row2">
+      <div class="field">
+        <label for="name">Name as per PAN</label>
+        <input type="text" id="name" name="name" placeholder="Full name" required maxlength="50" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="company_name">Business name</label>
+        <input type="text" id="company_name" name="company_name" placeholder="Your business" required maxlength="50" autocomplete="organization">
+      </div>
+      </div>
+      <div class="field">
+        <label for="uid_no">Aadhaar number</label>
+        <input type="text" id="uid_no" name="uid_no" placeholder="12 digit number" required minlength="12" maxlength="12" inputmode="numeric" data-digits autocomplete="off">
+      </div>
+      <div class="row2">
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required maxlength="50" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="mobile">Mobile number</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="10 digit number" required minlength="10" maxlength="10" inputmode="numeric" data-digits autocomplete="tel-national">
+      </div>
+      </div>
+      <label class="check"><input type="checkbox" required> <span>I accept the <a href="TermsConditions">Terms &amp; Conditions</a></span></label>
+      <div class="auth-actions">
+        <button type="submit" name="create_account" class="btn-cwp">Create account</button>
+      </div>
+      </form>
+      <p class="auth-alt">Already registered? <a href="Login">Log in</a></p>
     </div>
-    <div class="form-group">
-      <label class="text-white">Bussiness Name</label>
-      <input type="text" class="form-control form-control-sm" maxlength="50" name="company_name" placeholder="Bussiness Name" required>
-    </div>
-    <div class="form-group">
-      <label class="text-white">Aadhaar Number</label>
-      <input type="text" class="form-control form-control-sm" placeholder="Aadhaar Number" name="uid_no" minlength="12" maxlength="12" onkeypress="return isNumber(event)" required>
-    </div>
-    <div class="form-group">
-      <label class="text-white">Email Address</label>
-      <input type="email" class="form-control form-control-sm" placeholder="Email Address" name="email" maxlength="50" required>
-    </div>
-    <div class="form-group">
-      <label class="text-white">Mobile Number</label>
-      <input type="text" class="form-control form-control-sm" placeholder="Mobile Number" name="mobile" minlength="10" maxlength="10" onkeypress="return isNumber(event)" required>
-    </div>
-	<div class="form-check mb-2">
-    <input type="checkbox" class="form-check-input" required>
-    <label class="form-check-label text-white">I accept the <a href="TermsConditions">Terms & Conditions</a></label>
-    </div>
-    <button type="submit" name="create_account" class="btn bg-white text-dark btn-sm"><i class="fa fa-check-circle"></i> Proceed</button>
-  </form>
+  </main>
 </div>
-
-</div>
-</div>
-</div>
-    <!-- If you prefer jQuery these are the required scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <script src="assets/dist/js/vendor.js"></script>
-    <script src="assets/dist/js/adminx.js"></script>
-	<script src="assets/dist/js/custom-new.js"></script>
-	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-  </body>
-</html> 
-	 
+<script src="js/jquery.min.js"></script>
+<script src="assets/dist/js/custom-new.js"></script>
+<script src="js/cwp-auth.js"></script>
+</body>
+</html>

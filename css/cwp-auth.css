@@ -1,0 +1,67 @@
+/* CWP Pay sign-in / sign-up pages. Needs cwp-base.css. */
+.auth { min-height: 100vh; min-height: 100dvh; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+.auth-side { background: var(--ink); color: #cfe7de; padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; position: relative; overflow: hidden; }
+.auth-side::after { content: ""; position: absolute; width: 520px; height: 520px; right: -200px; bottom: -220px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, rgba(47, 214, 154, .28), rgba(47, 214, 154, 0) 68%); pointer-events: none; }
+.auth-side img { height: 40px; width: auto; display: block; }
+.auth-side h1 { color: #fff; font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 800; letter-spacing: -0.035em; max-width: 11em; }
+.auth-side p { margin-top: 1rem; max-width: 26em; color: #9fc2b8; }
+.auth-points { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: .7rem; position: relative; z-index: 1; }
+.auth-points li { position: relative; padding-left: 1.9rem; color: #e1f1ec; }
+.auth-points li::before { content: ""; position: absolute; left: 0; top: .28em; width: 1.15rem; height: 1.15rem; border-radius: 50%; background: var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c2623' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/70% no-repeat; }
+.auth-back { color: #9fc2b8; font-size: .92rem; text-decoration: none; position: relative; z-index: 1; }
+.auth-back:hover { color: var(--mint); }
+
+.auth-main { display: flex; align-items: center; justify-content: center; padding: clamp(24px, 4vw, 56px) clamp(16px, 4vw, 40px); }
+.auth-card { width: min(100%, 440px); }
+.auth-card--wide { width: min(100%, 560px); }
+.auth-card h2 { font-size: clamp(1.8rem, 3vw, 2.3rem); font-weight: 800; letter-spacing: -0.035em; }
+.auth-sub { margin-top: .5rem; color: var(--muted); }
+.auth-form { margin-top: 1.8rem; display: grid; gap: 1.1rem; }
+.auth-form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.field label { display: block; margin-bottom: .4rem; font-weight: 600; font-size: .95rem; color: var(--ink); }
+.field .hint { display: block; margin-top: .35rem; font-size: .82rem; color: var(--muted); }
+.field input[type=text], .field input[type=password], .field input[type=email], .field input[type=tel] {
+  width: 100%; min-height: 50px; padding: .7rem 1rem; font: 500 1rem var(--font-body); color: var(--ink);
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.field input::placeholder { color: #93a9a3; }
+.field input:hover { border-color: #b8cdc6; }
+.field input:focus { outline: none; border-color: var(--pine); box-shadow: var(--focus); }
+.pw { position: relative; }
+.pw input { padding-right: 4.6rem; }
+.pw button { position: absolute; right: 6px; top: 6px; bottom: 6px; padding: 0 .85rem; border: 0; border-radius: 10px; background: transparent; color: var(--pine); font: 600 .88rem var(--font-body); cursor: pointer; }
+.pw button:hover { background: rgba(20, 112, 95, .1); }
+.otp-row { display: flex; gap: .6rem; }
+.otp-row input { flex: 1; min-width: 0; letter-spacing: .25em; }
+.otp-row #load { flex: none; display: flex; }
+.otp-row #load .btn, .otp-row #load .btn:hover {
+  min-height: 50px; padding: 0 1.1rem; border-radius: 14px; border: 1.5px solid var(--ink); background: var(--surface); color: var(--ink);
+  font: 600 .92rem var(--font-body); cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; box-shadow: none;
+}
+.otp-row #load .btn:hover { background: var(--ink); color: #fff; }
+.otp-row #load img { display: block; }
+.check { display: flex; gap: .65rem; align-items: flex-start; font-size: .94rem; color: var(--text); }
+.check input { width: 20px; height: 20px; margin: .12rem 0 0; accent-color: var(--pine); flex: none; }
+.check a { color: var(--pine); font-weight: 600; }
+.auth-actions { display: grid; gap: .7rem; margin-top: .4rem; }
+.auth-actions .btn-cwp { width: 100%; min-height: 52px; font-size: 1.02rem; }
+.auth-actions .is-loading { opacity: .7; pointer-events: none; }
+.link-btn { appearance: none; border: 0; background: none; padding: .5rem; color: var(--pine); font: 600 .95rem var(--font-body); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.link-btn:hover { color: var(--ink); }
+.auth-alt { margin-top: 1.6rem; text-align: center; color: var(--muted); font-size: .95rem; }
+.auth-alt a { color: var(--pine); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .auth { grid-template-columns: 1fr; }
+  .auth-side { padding: 20px; gap: 0; flex-direction: row; align-items: center; justify-content: space-between; }
+  .auth-side h1, .auth-side p, .auth-points { display: none; }
+  .auth-side img { height: 34px; }
+  .auth-main { align-items: flex-start; padding-top: 28px; }
+}
+@media (max-width: 520px) {
+  .auth-form .row2 { grid-template-columns: 1fr; }
+  .otp-row { flex-wrap: wrap; }
+  .otp-row #load { width: 100%; }
+  .otp-row #load .btn { width: 100%; }
+}

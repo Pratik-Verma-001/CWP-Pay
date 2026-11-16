@@ -22,338 +22,58 @@ if($filename == 'plans.php' || $filename == 'plans'){
         redirect('plans.php',0);
     }
 }
-
-    
+require_once('inc/panel.php');
+$cwp_items = array(
+  array('Dashboard','Dashboard','grid'),
+  array('PaytmBusiness','Paytm Business','wallet','Robotics'),
+  array('PaytmReports','Paytm Reports','report','Robotics'),
+  array('UPIsSettings','UPIs Settings','sliders'),
+  array('MyQRCode','My QR Code','qr'),
+  array('UPITransactions','UPI Reports','phone'),
+  array('UPIsAccounts','UPIs Accounts','at'),
+  array('Transactions','Transactions','list'),
+  array('Settlement','Settlements','bank'),
+  array('Developer','Developer','code'),
+  array('Settings','Settings','cog'),
+  array('plans','Plans','tag'),
+);
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><?php echo webdata('company_name');?> | Partner</title>
+    <title><?php echo htmlspecialchars(webdata('company_name'));?> | Partner</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>try{var t=localStorage.getItem('cwp-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
     <link rel="stylesheet" type="text/css" href="assets/dist/css/adminx.css" media="screen" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-    <link rel="icon" href="<?php echo webdata('web_fav');?>" type="image/*" />
-	<script src="assets/dist/js/historry.js"></script>
-	<script src="assets/dist/js/sweetalert.min.js"></script>
-<style>
-.navbar-brand-image {
-    width: 3.875rem;
-    height: 1.875rem;
-}    
-.brand-logo{
-   background-image: url('images/brand.png');
-   background-size: contain; 
-   background-repeat: no-repeat;
-   background-position: 
-   center;
-   height: 40px; width: 120px 
-    
-}
-
-.small-logo {
-    /* height: 60px; */
-    width: 150px;
-}
-
-.adminx-container .navbar {
-    font-size: .875rem;
-    /* background-color: #000; */
-    height: 3.5rem;
-    padding: 0;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    background-image: linear-gradient(90deg, #00274d, #095dad);
-}
-.adminx-sidebar {
-    /* background: #fff; */
-    position: fixed;
-    width: 260px;
-    top: 3.5rem;
-    bottom: 0;
-    left: 0;
-    z-index: 1040;
-    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
-    background-image: linear-gradient(180deg, #00274d, #095dad);
-}
-.sidebar-nav-link {
-    padding: .5rem 1.5rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    color: #ffffff;
-}
-.sidebar-nav-link.active {
-    color: #ffffff;
-}
-.sidebar-sub-nav {
-    list-style-type: none;
-    margin: 0;
-    padding: .5rem 0;
-    font-size: .875rem;
-    background-image: linear-gradient(180deg, #095fae, #11c4cb);
-}
-a:hover {
-  color: white;
-}
-.card{
-border-radius: 5px;	
-}
-.sp-background {
-  background: linear-gradient(#0857ab,#11c9cc);
-  border-radius: 5px;	
-}
-.card-nblue {
- background: #011f3f;	
-}
-.text-nblue {
- color: #011f3f;	
-}
-.table td, .table th {
-    padding: .75rem;
-    vertical-align: top;
-    border-top: 1px solid #0e98be;
-}
-
-.bg-mix{
-  background: linear-gradient(#0857ab,#11c9cc);	
-}
-.table-hover tbody tr:hover {
-    background-color: #011f3f;
-    color: white;
-}
-.btn-group-xs > .btn, .btn-xs {
-  padding: .25rem .4rem;
-  font-size: .875rem;
-  line-height: .5;
-  border-radius: .2rem;
-}
-
-a {
-    text-decoration: none;
-}
-</style>
-
+    <link rel="icon" href="<?php echo htmlspecialchars(webdata('web_fav'));?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/cwp-base.css">
+    <link rel="stylesheet" href="css/cwp-panel.css">
+    <script src="assets/dist/js/historry.js"></script>
+    <script src="assets/dist/js/sweetalert.min.js"></script>
   </head>
-  <body>
-    <div class="adminx-container">
-      <nav class="navbar navbar-expand justify-content-between fixed-top">
-        <div class="navbar-brand mb-1 mb-1 ml-2 d-md-block">
-		<img src="<?php echo webdata('company_logo');?>" alt="CWP Pay" style="height:40px;width:auto;">
+  <body class="cwp-body panel">
+    <div class="adminx-container p-shell">
+      <aside class="p-side" id="p-side" aria-label="Sidebar">
+        <div class="p-side-head">
+          <a href="Dashboard" class="p-logo"><img src="images/cwp-logo-dark.svg" alt="CWP Pay" width="120" height="34"></a>
+          <button type="button" class="p-icon-btn p-side-close" aria-label="Close menu"><?php echo cwp_icon('close');?></button>
         </div>
+        <?php echo cwp_nav($cwp_items);?>
+        <a href="Logout" class="p-link p-logout"><?php echo cwp_icon('logout');?><span>Log out</span></a>
+      </aside>
+      <div class="p-scrim" hidden></div>
+      <header class="p-top">
+        <button type="button" class="p-icon-btn p-menu-btn" aria-label="Open menu" aria-controls="p-side" aria-expanded="false"><?php echo cwp_icon('menu');?></button>
+        <a href="Dashboard" class="p-top-logo"><img src="images/cwp-logo-light.svg" alt="CWP Pay" width="104" height="30"></a>
+        <div class="p-top-end">
+          <button type="button" class="p-icon-btn p-theme" aria-label="Switch light or dark theme"><span class="t-sun"><?php echo cwp_icon('sun');?></span><span class="t-moon"><?php echo cwp_icon('moon');?></span></button>
+          <span class="p-user"><?php echo htmlspecialchars($userdata['name']);?></span>
+          <a href="Logout" class="p-icon-btn" aria-label="Log out"><?php echo cwp_icon('logout');?></a>
+        </div>
+      </header>
 
-      
-
-        <ul class="navbar-nav d-flex justify-content-end mr-2">
-        
-        <div class="d-flex flex-1 d-block d-md-none">
-          <a class="sidebar-toggle ml-3 text-white">
-            <i data-feather="menu"></i>
-          </a>
-        </div> 
-             
-        <div class="d-flex flex-1 mr-2">
-          <a href="Logout" class="ml-3 text-white">
-            <i data-feather="log-out"></i>
-          </a> 
-        </div> 
-        
-        
-        </ul>
-      </nav>
-
-      <!-- expand-hover push -->
-      <!-- Sidebar -->
-      <div class="adminx-sidebar expand-hover push" style="overflow: hidden;">
-        <ul class="sidebar-nav">
-          <li class="sidebar-nav-item mt-2">
-            <a href="Dashboard" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fas fa-tasks"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                Dashboard 
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-		  
-		  <li class="sidebar-nav-item">
-            <a href="PaytmBusiness" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-bold"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                Paytm Business <span class="badge badge-danger font-weight-bolder mr-1">Robotics</span>
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>		  
-		  
-          
-          <li class="sidebar-nav-item">
-            <a href="PaytmReports" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-wallet"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                Paytm Reports <span class="badge badge-danger font-weight-bolder mr-1">Robotics</span>
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>          
-          		  
-		  
-		  <li class="sidebar-nav-item">
-            <a href="UPIsSettings" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-cog"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                UPIs Settings <span class="badge badge-primary font-weight-bolder mr-1">Advanced</span>
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-          
-          
-          
-		  <li class="sidebar-nav-item">
-            <a href="MyQRCode" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-qrcode"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                My QR Code <span class="badge badge-primary font-weight-bolder mr-1">Advanced</span>
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-          
-          <li class="sidebar-nav-item">
-            <a href="UPITransactions" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-tablet-alt"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                UPIReports <span class="badge badge-primary font-weight-bolder mr-1">Advanced</span>
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-
-          		  
-		  
-		  
-          <li class="sidebar-nav-item">
-            <a href="UPIsAccounts" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-at"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                UPIs Accounts
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-		  
-		  <li class="sidebar-nav-item">
-            <a href="Transactions" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-list-alt"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                Transactions
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-          
-		  <li class="sidebar-nav-item">
-            <a href="Settlement" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-book"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                Settlements 
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-		  
-		 
-		  <li class="sidebar-nav-item">
-            <a href="Developer" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-tools"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                Developer
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-		  
-		  
-		  <li class="sidebar-nav-item">
-            <a href="Settings" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-cogs"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                Settings
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-		  
-		  <li class="sidebar-nav-item">
-            <a href="plans" class="sidebar-nav-link active">
-              <span class="sidebar-nav-icon">
-                <i class="fa fa-wallet"></i>
-              </span>
-              <span class="sidebar-nav-name">
-                Plans
-              </span>
-              <span class="sidebar-nav-end">
-
-              </span>
-            </a>
-          </li>
-		  
-          
-         
-            </ul>
-          </li>
-        </ul>
-      </div><!-- Sidebar End -->

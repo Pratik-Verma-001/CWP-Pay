@@ -18,23 +18,8 @@
             });
         }
     </script>
-<script src="assets/dist/js/swipe.js"></script>
-<script>
-       
-            window.onload = function() {
 
-                document.addEventListener('swiped-right', function(e) {
-                    //alert(e.type);
-                    $(".adminx-sidebar").addClass("in");   
-                });
-                
-                document.addEventListener('swiped-left', function(e) {
-                    //alert(e.type);
-                    $(".adminx-sidebar").removeClass("in");   
-                });
-
-            }
-   </script>
+<script src="js/cwp-panel.js"></script>
   
   </body>
 </html>
