@@ -6,114 +6,21 @@ require_once('../system/function.php');
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><?php echo webdata('company_name');?> | Payments</title>
+    <title><?php echo htmlspecialchars(webdata('company_name'));?> | Payments</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="../assets/dist/css/adminx.css" media="screen" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-    <link rel="icon" href="<?php echo webdata('web_fav');?>" type="image/*" />
-	<!--script src="../assets/dist/js/historry.js"></script-->
-	<script src="../assets/dist/js/sweetalert.min.js"></script>
-<style>
-.navbar-brand-image {
-    width: 3.875rem;
-    height: 1.875rem;
-}    
-.brand-logo{
-   background-image: url('../images/brand.png');
-   background-size: contain; 
-   background-repeat: no-repeat;
-   background-position: 
-   center;
-   height: 40px; width: 120px 
-    
-}
-
-.small-logo {
-    /* height: 60px; */
-    width: 150px;
-}
-
-.adminx-container .navbar {
-    font-size: .875rem;
-    /* background-color: #000; */
-    height: 3.5rem;
-    padding: 0;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    background-image: linear-gradient(90deg, #14705f, #2fd69a);
-}
-.adminx-sidebar {
-    /* background: #fff; */
-    position: fixed;
-    width: 260px;
-    top: 3.5rem;
-    bottom: 0;
-    left: 0;
-    z-index: 1040;
-    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);
-    background-image: linear-gradient(180deg, #14705f, #2fd69a);
-}
-.sidebar-nav-link {
-    padding: .5rem 1.5rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    color: #ffffff;
-}
-.sidebar-nav-link.active {
-    color: #ffffff;
-}
-.sidebar-sub-nav {
-    list-style-type: none;
-    margin: 0;
-    padding: .5rem 0;
-    font-size: .875rem;
-    background-image: linear-gradient(180deg, #14705f, #2fd69a);
-}
-a:hover {
-  color: white;
-}
-.card{
-border-radius: 5px;	
-}
-.sp-background {
-  background: #14705f;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}
-.card-nblue {
- background: #0c2623;	
-}
-.table td, .table th {
-    padding: .75rem;
-    vertical-align: top;
-    border-top: 1px solid #14705f;
-}
-
-.bg-mix{
-  background: linear-gradient(#14705f,#2fd69a);	
-}
-.table-hover tbody tr:hover {
-    background-color: #0c2623;
-    color: white;
-}
-</style>
-
-</head>
-<body class="sp-background">
-<div class="p-3">
-<div class="container pl-5 pr-5">	
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0c2623">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="<?php echo htmlspecialchars(webdata('web_fav'));?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../css/cwp-base.css">
+    <link rel="stylesheet" href="../css/cwp-pay.css">
+    <script src="../assets/dist/js/sweetalert.min.js"></script>
+  </head>
+<body class="cwp-body pay">
+<main class="pay-wrap">
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST"){
 if(isset($_POST['token'])&& 
@@ -321,69 +228,37 @@ exit();
 }
 ?>
 
-<!--h4 class="text-white pb-3"><b><?php echo $result['company_name'];?></b></h4-->
-<div class="row  d-flex justify-content-center" style="">
-<div class="col-md-12 card p-4">	
-<div class="row">
-<!--div class="col-md-12">
-<div><a href="<?php echo $callback_url;?>" class="text-dark" style="text-decoration: none;"><i class="fa fa-reply"></i> Go Back</a></div>
-<hr>
-</div--> 
-<div class="col-md-8">
-<div class="text-dark">
-<a href="<?php echo $callback_url;?>?results=payment cancel" class="text-dark" style="text-decoration: none;"><i class="fa fa-reply"></i> Go Back</a> 
-<b>(<?php echo $result['company_name'];?>)</b><br><span>Order Id: <?php echo $orderId;?></span></div>
-</div> 
-<div class="col-md-4 text-right">
-<div class="text-dark">Total Amount <i class="fas fa-rupee-sign fa-sm"></i><b><?php echo $txnAmount;?></b></div>
-</div>  
-
-<div class="col-md-12 text-center">
-<hr>
-<div class="text-dark"><b>Scan QR code using BHIM or your preferred UPI app</b></div>
-<div class="col-md-12 text-center mt-1">
-<div class="text-center">
-<img src="../assets/img/gpay.png" alt="gpay" height="20px"> 
-<img src="../assets/img/paytm.png" alt="gpay" height="20px">
-<img src="../assets/img/phonepe.png" alt="gpay" height="20px">
-<img src="../assets/img/bhim_logo.png" alt="gpay" height="20px">
-<img src="../assets/img/amazonpay.png" alt="gpay" height="20px">
-</div>
-<div class="mt-2 d-flex justify-content-center" id="qrcode" style="max-width:100%">
-<img src="../assets/img/loading.cc387905.gif" alt="" width="200">
-</div>
-
-<?php 
-$paybtn = 'style="display:none;"'; 
+<div class="pay-brand"><img src="../images/cwp-logo-dark.svg" alt="CWP Pay" width="120" height="32"></div>
+<section class="pay-card">
+  <header class="pay-head">
+    <a class="pay-back" href="<?php echo htmlspecialchars($callback_url);?>?results=payment cancel" aria-label="Cancel and go back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <div class="pay-merchant"><b><?php echo htmlspecialchars($result['company_name']);?></b><span>Order <?php echo htmlspecialchars($orderId);?></span></div>
+  </header>
+  <div class="pay-amount"><small>Amount to pay</small><strong>&#8377;<?php echo $txnAmount;?></strong></div>
+  <p class="pay-hint">Scan with any UPI app</p>
+  <div class="pay-apps">
+    <img src="../assets/img/gpay.png" alt="Google Pay">
+    <img src="../assets/img/paytm.png" alt="Paytm">
+    <img src="../assets/img/phonepe.png" alt="PhonePe">
+    <img src="../assets/img/bhim_logo.png" alt="BHIM">
+    <img src="../assets/img/amazonpay.png" alt="Amazon Pay">
+  </div>
+  <div class="pay-qr"><div id="qrcode"><img src="../assets/img/loading.cc387905.gif" alt="Loading QR code" width="200"></div></div>
+  <?php
+$paybtn = 'style="display:none;"';
 if(isMobile()){
-$paybtn = 'style="display:inline-block;"';   
+$paybtn = 'style="display:inline-flex;"';
 }
 ?>
-<a href="#" id="upilink" class="btn bg-primary text-white btn-sm mt-2 upilink" <?=$paybtn?> >Pay ₹<?php echo $txnAmount;?> using a UPI App</a><br>
-<span class="text-center font-weight-bold">This QR code will expire in <span id="upitimer"></span></span></p> 
-</div> 
-
-          <div class="col-lg-12">
-              
-         
-          
-          </div>
-<div class="col-md-12 text-center mt-0">
-<img src="../assets/img/rectangle.png" alt="" style="width: 100%;">
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+    <a href="#" id="upilink" class="pay-btn upilink" <?=$paybtn?>>Pay &#8377;<?php echo $txnAmount;?> in your UPI app</a>
+  <div class="pay-timer"><i></i><span>Expires in <span id="upitimer"></span></span></div>
+  <p class="pay-note">Keep this page open. It updates by itself once your payment is received.</p>
+</section>
+<p class="pay-secure">Secured by CWP Pay</p>
+</main>
 
     <!-- If you prefer jQuery these are the required scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <script src="../assets/dist/js/vendor.js"></script>
-    <script src="../assets/dist/js/adminx.js"></script>
 	<script src="../assets/dist/js/custom-new.js?<?=time()?>"></script>
 	<script src="../assets/dist/js/qrcode.min.js"></script>	
 	<script>upiCountdown("upitimer",005,00,'<?php echo $callback_url;?>?results=time out');</script>

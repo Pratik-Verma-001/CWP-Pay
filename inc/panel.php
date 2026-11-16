@@ -37,3 +37,14 @@ function cwp_nav($items) {
     }
     return $out . '</nav>';
 }
+
+/* Title bar for the current page, taken from the sidebar list. */
+function cwp_pagehead($items) {
+    $page = basename($_SERVER['SCRIPT_NAME'], '.php');
+    foreach ($items as $it) {
+        if (strcasecmp($page, $it[0]) === 0) {
+            return '<div class="p-pagehead"><h1>' . htmlspecialchars($it[1]) . '</h1></div>';
+        }
+    }
+    return '';
+}

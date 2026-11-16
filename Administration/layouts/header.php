@@ -68,4 +68,5 @@ $cwp_items = array(
           <a href="Logout" class="p-icon-btn" aria-label="Log out"><?php echo cwp_icon('logout');?></a>
         </div>
       </header>
+      <?php echo cwp_pagehead($cwp_items);?>
 

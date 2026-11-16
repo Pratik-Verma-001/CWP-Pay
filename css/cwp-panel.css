@@ -126,3 +126,46 @@ body.panel { background: var(--p-bg); color: var(--p-text); font-family: var(--f
 .p-link { gap: .7rem; }
 .p-tag { font-size: .62rem; padding: .08rem .42rem; }
 .panel .card-nblue a:not(.btn), .panel .modal-content.card-nblue a:not(.btn) { color: var(--mint) !important; }
+
+/* ---------- page title bar ---------- */
+.p-pagehead { padding: 22px 15px 0; }
+.p-pagehead h1 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.035em; color: var(--p-text); margin: 0; }
+.p-pagehead + .adminx-content .adminx-main-content { padding-top: 16px; }
+@media (min-width: 992px) { .p-pagehead { padding: 28px 32px 0; } }
+
+/* ---------- filter bar: the first header row of report tables becomes a wrapping toolbar ---------- */
+.panel .table-responsive-md, .panel .table-responsive { container-type: inline-size; }
+.panel .table thead:has(> tr.card-nblue) { display: table-caption; caption-side: top; width: 100cqw; position: sticky; left: 0; }
+.panel .table:has(> thead > tr.card-nblue) { border-collapse: separate; border-spacing: 0; }
+.panel .table thead > tr.card-nblue { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; padding: 14px 16px; border-bottom: 1px solid var(--p-line); }
+.panel .table thead > tr.card-nblue > th { display: block; padding: 0 !important; border: 0 !important; flex: 0 1 auto; min-width: 0 !important; font-size: .9rem; text-transform: none; letter-spacing: 0; }
+.panel .table thead > tr.card-nblue > th[colspan] { flex: 1 1 220px; }
+.panel .table thead > tr.card-nblue > th:first-child { font-weight: 800; font-family: var(--font-display); font-size: 1.05rem; margin-right: .4rem; }
+.panel .table thead > tr.card-nblue input[type=date], .panel .table thead > tr.card-nblue input[type=number] { min-width: 0; }
+.panel .table thead > tr.card-nblue input[type=number] { width: 90px; }
+.panel .table thead > tr.card-nblue .input-group { flex-wrap: nowrap; }
+.panel .table thead > tr.card-nblue .input-group .form-control { height: 38px !important; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.panel .table thead > tr.card-nblue .input-group-append .btn { border-radius: 0 999px 999px 0; height: 38px; }
+.panel .table thead > tr.card-nblue .btn { white-space: nowrap; }
+
+/* empty tables */
+.panel .p-empty td { text-align: left; padding-left: 16px !important; padding: 2.4rem 1rem !important; color: var(--p-muted); }
+
+/* ---------- plans ---------- */
+.p-plans { max-width: 860px; }
+.p-plan-status { margin-bottom: 1.2rem; padding: .8rem 1.1rem; border-radius: 14px; background: var(--p-surface); border: 1px solid var(--p-line); }
+.p-plan-status.is-over { border-color: #f0b3ac; background: #fff1ef; color: #9c2a1f; }
+:root[data-theme="dark"] .p-plan-status.is-over { background: #3a1d1a; color: #ffb4ab; border-color: #6b312b; }
+.p-plan-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.p-plan { position: relative; display: flex; flex-direction: column; background: var(--p-surface); border: 1.5px solid var(--p-line); border-radius: 22px; padding: 26px; margin: 0; }
+.p-plan--main { background: var(--ink); border-color: var(--ink); color: #cfe7de; }
+:root[data-theme="dark"] .p-plan--main { background: var(--p-surface-2); border-color: var(--mint-d); }
+.p-plan h3 { font-size: 1.35rem; color: var(--p-text); }
+.p-plan--main h3, .p-plan--main .p-plan-price { color: #fff; }
+.p-plan-price { margin: .6rem 0 0; font: 800 2.8rem/1 var(--font-display); letter-spacing: -0.04em; color: var(--p-text); }
+.p-plan-price small { font: 500 .95rem var(--font-body); letter-spacing: 0; margin-left: .35rem; opacity: .7; }
+.p-plan ul { list-style: none; margin: 1.2rem 0 1.6rem; padding: 0; display: grid; gap: .55rem; flex: 1; }
+.p-plan li::before { content: "\2713"; color: var(--mint-d); font-weight: 800; margin-right: .6rem; }
+.p-plan-flag { align-self: flex-start; margin-bottom: .7rem; padding: .15rem .65rem; border-radius: 999px; background: var(--gold); color: var(--ink); font-size: .75rem; font-weight: 700; }
+.p-plan .btn { width: 100%; min-height: 46px; }
+@media (max-width: 640px) { .p-plan-grid { grid-template-columns: 1fr; } }

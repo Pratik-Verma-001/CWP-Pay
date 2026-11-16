@@ -1,5 +1,17 @@
 (function () {
   'use strict';
+  /* empty tables: say so instead of showing only the headings */
+  document.querySelectorAll('.panel table.table').forEach(function (t) {
+    var body = t.tBodies[0];
+    if (!body || body.querySelector('tr')) return;
+    var cols = 0;
+    var head = t.querySelector('thead:last-of-type tr') || t.querySelector('thead tr');
+    if (head) cols = head.children.length;
+    var tr = document.createElement('tr'); tr.className = 'p-empty';
+    var td = document.createElement('td'); td.colSpan = cols || 1; td.textContent = 'Nothing to show yet.';
+    tr.appendChild(td); body.appendChild(tr);
+  });
+
   var side = document.getElementById('p-side');
   if (!side) return;
   var scrim = document.querySelector('.p-scrim');

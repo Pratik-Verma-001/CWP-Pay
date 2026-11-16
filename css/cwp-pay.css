@@ -1,0 +1,34 @@
+/* CWP Pay customer checkout. Needs cwp-base.css. */
+body.pay { background: var(--ink); min-height: 100vh; min-height: 100dvh; display: flex; justify-content: center; padding: clamp(14px, 4vw, 40px) 14px; position: relative; overflow-x: hidden; }
+body.pay::before { content: ""; position: fixed; width: 640px; height: 640px; top: -260px; right: -220px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, rgba(47, 214, 154, .25), rgba(47, 214, 154, 0) 68%); pointer-events: none; }
+.pay-wrap { width: min(100%, 440px); position: relative; align-self: flex-start; }
+.pay-wrap > h2 { color: #fff; text-align: center; font-size: 1.4rem; line-height: 1.35; margin-top: 18vh; }
+.pay-brand { display: flex; justify-content: center; margin-bottom: 18px; }
+.pay-brand img { height: 32px; width: auto; display: block; }
+.pay-card { background: var(--surface); border-radius: 26px; padding: clamp(20px, 5vw, 30px); box-shadow: 0 40px 70px -40px rgba(0, 0, 0, .8); text-align: center; }
+.pay-head { display: flex; align-items: center; gap: .8rem; text-align: left; padding-bottom: 1rem; border-bottom: 1px dashed var(--line); }
+.pay-back { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--line); color: var(--ink); text-decoration: none; transition: background-color .15s; }
+.pay-back:hover { background: var(--paper); }
+.pay-back svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.pay-merchant { min-width: 0; }
+.pay-merchant b { display: block; color: var(--ink); font-size: 1.02rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pay-merchant span { display: block; font-size: .85rem; color: var(--muted); overflow-wrap: anywhere; }
+.pay-amount { margin: 1.3rem 0 .2rem; }
+.pay-amount small { display: block; color: var(--muted); font-size: .9rem; }
+.pay-amount strong { display: block; font: 800 clamp(2.4rem, 11vw, 3.2rem)/1.1 var(--font-display); letter-spacing: -0.04em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.pay-hint { margin-top: 1rem; font-weight: 600; color: var(--ink); }
+.pay-apps { display: flex; justify-content: center; align-items: center; gap: .9rem; flex-wrap: wrap; margin-top: .6rem; }
+.pay-apps img { height: 20px; width: auto; display: block; }
+.pay-qr { margin: 1.1rem auto 0; width: fit-content; max-width: 100%; padding: 14px; border-radius: 22px; background: #fff; border: 2px solid var(--ink); }
+.pay-qr #qrcode { display: flex; justify-content: center; min-height: 200px; align-items: center; max-width: 100%; }
+.pay-qr #qrcode img, .pay-qr #qrcode canvas { max-width: 100%; height: auto !important; display: block; }
+.pay-btn { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 52px; margin-top: 1.1rem; padding: .7rem 1.2rem; border: 0; border-radius: 999px; background: var(--mint); color: var(--ink); font: 700 1.02rem var(--font-body); text-decoration: none; cursor: pointer; transition: background-color .15s; }
+.pay-btn:hover { background: #55e3b0; color: var(--ink); text-decoration: none; }
+.pay-btn--danger { background: #ffe3df; color: #9c2a1f; margin-top: .6rem; }
+.pay-btn--danger:hover { background: #ffd0ca; color: #9c2a1f; }
+.pay-timer { margin-top: 1.1rem; display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .9rem; border-radius: 999px; background: #fff4dc; color: #8a5a00; font-weight: 600; font-size: .92rem; }
+.pay-timer i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-d); animation: paypulse 1.2s ease-in-out infinite; }
+.pay-timer #upitimer { font-variant-numeric: tabular-nums; }
+.pay-note { margin-top: .9rem; font-size: .85rem; color: var(--muted); }
+.pay-secure { margin-top: 14px; text-align: center; color: #7ea79c; font-size: .82rem; }
+@keyframes paypulse { 50% { transform: scale(1.7); opacity: .35; } }

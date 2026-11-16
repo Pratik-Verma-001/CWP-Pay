@@ -118,60 +118,37 @@ redirect('','1500');
 
 }
 ?>
-<form action="" method="POST">
-<div class="row mt-1">
-              <div class="col">
-                <div class="card mb-grid card-nblue">
-                <div class="row p-3">
-        <div class="col-md-3 mb-3">
-				<h4 class="text-white">Gateway Plans</h4><hr class="bg-white">
-		    <div class="card card-custom">				
-        	<div class="card-body row">
-        	  <div class="col-md-6  mb-2"> 
-        	 <!--  <a class="nav-link border d-flex flex-grow-1 rounded flex-column align-items-center">-->
-        		<!--<img src="assets/img/bank_paytm.jpg" alt="" width="150"></a>   -->
-        		<span class="font-size-lg py-2 font-weight-bolder text-center"><b>Plan Price :</b> <span class="text-dark"> 199<br>
-        		<span class="font-size-lg py-2 font-weight-bolder text-center"><b>Plan Validity :</b> <span class="text-dark"> 30 Days<br>
-        		<span class="font-size-lg py-2 font-weight-bolder text-center"><b>Usage Limit :</b> <span class="text-dark"> Unlimited<br>
-        		<input name="plan" hidden value="basic">
-        			<button class="btn bg-mix text-white btn-sm">Active Now</button>
-        			</span>
-        		</span>
-        	  </div>
-            </div>
-        </div>
-        </div>
-      </form>  
-      
-        <div class="col-md-3 mb-3">
-				<h4 class="text-white">Free Trial</h4><hr class="bg-white">
-		    <div class="card card-custom">				
-        	<div class="card-body row">
-        	  <div class="col-md-6  mb-2"> 
-        	  <form action="" method="POST">
-        	 <!--  <a class="nav-link border d-flex flex-grow-1 rounded flex-column align-items-center">-->
-        		<!--<img src="assets/img/bank_paytm.jpg" alt="" width="150"></a>   -->
-        		<span class="font-size-lg py-2 font-weight-bolder text-center"><b>Plan Price :</b> <span class="text-dark"> <b>Free</b><br>
-        		<span class="font-size-lg py-2 font-weight-bolder text-center"><b>Plan Validity :</b> <span class="text-dark"> 3 Days<br>
-        		<span class="font-size-lg py-2 font-weight-bolder text-center"><b>Usage Limit :</b> <span class="text-dark"> Unlimited<br>
-        	
-        		<input name="trial" hidden value="free">
-        			<button class="btn bg-mix text-white btn-sm">Active Trial</button>
-        			  </span>
-        		</span>
-        	  </div>
-            </div></form>
-        </div>
-        </div>
-         
-        
-      </div>
-    </div>
+<?php $left = getExpiredays(date('d-m-Y H:i:s'), $userdata['expire_date']); ?>
+<div class="p-plans">
+  <?php if($left >= 0){ ?><p class="p-plan-status"><b><?php echo (int)$left;?> days</b> left on your current plan.</p>
+  <?php }else{ ?><p class="p-plan-status is-over">Your plan has expired. Pick a plan below to keep taking payments.</p><?php } ?>
+  <div class="p-plan-grid">
+    <form class="p-plan p-plan--main" action="" method="POST">
+      <span class="p-plan-flag">Most chosen</span>
+      <h3>Standard</h3>
+      <p class="p-plan-price">&#8377;199<small>for 30 days</small></p>
+      <ul>
+        <li>Unlimited payments</li>
+        <li>0% transaction fee</li>
+        <li>Real-time bank settlement</li>
+      </ul>
+      <input name="plan" type="hidden" value="basic">
+      <button type="submit" class="btn bg-white text-dark">Activate now</button>
+    </form>
+    <form class="p-plan" action="" method="POST">
+      <h3>Free trial</h3>
+      <p class="p-plan-price">&#8377;0<small>for 3 days</small></p>
+      <ul>
+        <li>Unlimited payments</li>
+        <li>0% transaction fee</li>
+        <li>One trial per account</li>
+      </ul>
+      <input name="trial" type="hidden" value="free">
+      <button type="submit" class="btn bg-mix text-white">Start trial</button>
+    </form>
   </div>
 </div>
-
-      
-      </div>
+</div></div></div>
 <?php
 require_once('layouts/footer.php');
 ?>
