@@ -32,7 +32,7 @@ if(isset($_POST['upiuid'])&&
 !empty($_POST['checksum']) ){
 
 $upiuid = safe_str($_POST['upiuid']);
-$token = strip_tags($_POST['token']);
+$token = db_escape(strip_tags($_POST['token']));
 $orderId = safe_str($_POST['orderId']);
 $txnAmount = safe_str($_POST['txnAmount']);
 $txnNote = safe_str($_POST['txnNote']);

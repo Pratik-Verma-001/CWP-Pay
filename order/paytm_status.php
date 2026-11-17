@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"]=="GET"){
 if(isset($_GET['token'])&& 
 !empty($_GET['orderid'])){
 
-$token = strip_tags($_GET['token']);
+$token = db_escape(strip_tags($_GET['token']));
 $client_orderid = safe_str($_GET['orderid']);
 
 $res = sql_query("SELECT * FROM `tb_partner` WHERE token='".$token."' AND status='active' ");

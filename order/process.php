@@ -39,7 +39,7 @@ filter_var($_POST['cust_Email'], FILTER_VALIDATE_EMAIL)
 ){
     
 
-$token = strip_tags($_POST['token']);
+$token = db_escape(strip_tags($_POST['token']));
 $orderId = safe_str($_POST['orderId']);
 $txnAmount = safe_str($_POST['txnAmount']);
 $txnNote = safe_str($_POST['txnNote']);

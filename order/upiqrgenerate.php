@@ -6,8 +6,8 @@ require_once('../system/function.php');
 if($_SERVER["REQUEST_METHOD"]=="POST"){
 if(isset($_POST['token']) && !empty($_POST['secret']) ){
 
-$token = strip_tags($_POST['token']);
-$secret = strip_tags($_POST['secret']);
+$token = db_escape(strip_tags($_POST['token']));
+$secret = db_escape(strip_tags($_POST['secret']));
 $am = strip_tags($_POST['am']);
 $tn = strip_tags($_POST['tn']);
 
@@ -22,7 +22,7 @@ $upi_id = get_upi_id($user_id,"upi_id");
 $upi_name = get_upi_id($user_id,"upi_name");
 $ifsc = get_upi_id($user_id,"ifsc");
 $tx = urlencode("upi://pay?pa={$upi_id}&pn={$upi_name}&cu=INR&tn=$tn&am=$am");
-$qrcode = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=$tx&choe=UTF-8&chld=L|0"; 
+$qrcode = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=$tx"; 
 
 $results = array(
     "qrcode"=>$qrcode, 

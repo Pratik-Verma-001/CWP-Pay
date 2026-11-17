@@ -21,7 +21,7 @@ $cust_Email = $_SESSION['cust_Email'];
 $txnNote = $_SESSION['txnNote'];
 $muid = $_SESSION['muid'];	
 $auth_token = $_SESSION['auth_token'];
-$amount=$_SESSION["txnNote"];	
+$client_amount = $_SESSION["txnAmount"];	
 
 $uquery = sql_query("SELECT * FROM `tb_partner` WHERE id='".$muid."' AND token='".$auth_token."' ");
 $userdata = sql_fetch_array($uquery);
@@ -37,21 +37,27 @@ $r = curl_get("https://securegw.paytm.in/order/status?JsonData=$JsonData","");
 $res = json_decode($r,true);	
 
 if($res['STATUS']=="TXN_SUCCESS" && $res['MID']==get_paytm_business($userdata['id'],"mid") && $res['ORDERID']==$txn_ref_id){
+// The amount Paytm received must match the amount of this order.
+if(!isset($res['TXNAMOUNT']) || abs((float)$res['TXNAMOUNT'] - (float)$client_amount) > 0.009){
+echo json_encode(array("status"=>'FAILED', "message"=>'Amount mismatch'));
+exit;
+}
+$amount = $res['TXNAMOUNT'];
    
 $credited_at = date_time("Y-m-d h:i:s");
 $bene_account_no = get_paytm_business($userdata['id'],"upi_id");
 $bene_account_ifsc = $txn_ref_id;
-$rmtr_full_name = $cust_Email;
-$rmtr_account_no = $cust_Mobile." - ".$client_orderid;
-$rmtr_account_ifsc = $res['RESPMSG'];
-$rmtr_to_bene_note = $txnNote;
+$rmtr_full_name = db_escape($cust_Email);
+$rmtr_account_no = db_escape($cust_Mobile." - ".$client_orderid);
+$rmtr_account_ifsc = db_escape($res['RESPMSG']);
+$rmtr_to_bene_note = db_escape($txnNote);
 $txn_id = time();
 $charges_gst = 0;
-$settled_amount = $res['TXNAMOUNT'];;
-$txn_time = $res['TXNDATE'];
-$created_at = $res['TXNDATE'];
-$payment_type = $res['PAYMENTMODE'];
-$bank_ref_num = $res['BANKTXNID'];
+$settled_amount = (float)$res['TXNAMOUNT'];
+$txn_time = db_escape($res['TXNDATE']);
+$created_at = db_escape($res['TXNDATE']);
+$payment_type = db_escape($res['PAYMENTMODE']);
+$bank_ref_num = db_escape($res['BANKTXNID']);
 
 
 $ress = sql_query("INSERT INTO `tb_virtualtxn`(`credited_at`, `bene_account_no`, `bene_account_ifsc`, `rmtr_full_name`, `rmtr_account_no`, `rmtr_account_ifsc`, `rmtr_to_bene_note`, `txn_id`, `amount`, `charges_gst`, `settled_amount`, `txn_time`, `created_at`, `payment_type`, `bank_ref_num`,`client_orderid`, `results`, `user_id`) 

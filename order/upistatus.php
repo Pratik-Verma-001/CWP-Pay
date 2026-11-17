@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 if(isset($_POST['token'])&& 
 !empty($_POST['bank_ref_num'])){
 
-$token = strip_tags($_POST['token']);
+$token = db_escape(strip_tags($_POST['token']));
 $bank_ref_num = safe_str($_POST['bank_ref_num']);
 
 $res = sql_query("SELECT * FROM `tb_partner` WHERE token='".$token."' AND status='active' ");

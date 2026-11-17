@@ -40,37 +40,23 @@ $arr = array("status"=>false, "msg"=>'Credentials is invalid');
 
 }
 
-//function SendSMS($mobile, $message) 
-{
-    //$o11 = new stdClass();
-
-    //$factory = new TypeFactory($dbName);
-    //$o11 = $factory->get_object("30", "api", "api_id");
-//$mobile = "91"($result['mobile']);
-   // if ($o11->api_id == "30") {
-        
-        //$message = $message;
-		$curl = curl_init();
-        $url = "https://wamsg.tk/wa.php?api_key=UTmrUQYT29HAK401akw4ws3RZUpdRA&sender=917800152849&number=91".($result['mobile'])."&message=$msg";
-        
-       
-       // &sender_id=" . $o11->md_key . "&message=".urlencode($message)."&language=english&route=" . $o11->corporate_id . "&numbers=".urlencode($mobile);
-		
-		
-		
-		
-		$ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $data = curl_exec($ch);
-         //pt($url);die;
-        curl_close($ch);
+/* WhatsApp copy of the OTP. Set WAMSG_API_KEY and WAMSG_SENDER in system/dbconfig.php to enable it. */
+function send_whatsapp_otp($mobile, $message){
+    if(!defined('WAMSG_API_KEY') || !defined('WAMSG_SENDER') || $mobile==''){
+        return false;
+    }
+    $url = "https://wamsg.tk/wa.php?api_key=".urlencode(WAMSG_API_KEY)."&sender=".urlencode(WAMSG_SENDER)."&number=91".urlencode($mobile)."&message=".urlencode($message);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    $data = curl_exec($ch);
+    curl_close($ch);
+    return $data;
 }
-
-
-
-
-
+if($arr['status']===true){
+    send_whatsapp_otp($result['mobile'], $msg);
+}
 
 echo json_encode($arr);
 ?>

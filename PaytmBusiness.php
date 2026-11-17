@@ -31,7 +31,7 @@ $allow = array("paytm");
 if(isUPI($upi_id,$allow)){
 $paytm_business = json_encode(array("upi_data"=>json_decode($upi_data,true),"upi_id"=>$upi_id, "upi_name"=>$upi_name, "mid"=>$mid));
 
-if(sql_query("UPDATE `tb_partner` SET paytm_business='".$paytm_business."' WHERE id='".$userdata['id']."' ")){
+if(sql_query("UPDATE `tb_partner` SET paytm_business='".db_escape($paytm_business)."' WHERE id='".$userdata['id']."' ")){
 echo '<script>swal("Successfully!", "Paytm Business Details Updated!", "success");</script>';
 redirect('','1500');		
 }else{

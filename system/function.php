@@ -10,6 +10,12 @@ if($result){
 
 }
 
+/* Escape a value before it is placed inside quotes in an SQL string. */
+function db_escape($value){
+global $conn;
+return mysqli_real_escape_string($conn, (string)$value);
+}
+
 function sql_fetch_array($data){
 $result = mysqli_fetch_array($data); 
 if($result){
@@ -144,7 +150,7 @@ $upi_id = get_upi_id($id,"upi_id");
 $upi_name = get_upi_id($id,"upi_name");    
 $tx = urlencode("upi://pay?pa={$upi_id}&pn={$upi_name}&cu=INR"); 
 
-$image = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=$tx&choe=UTF-8&chld=L|0";
+$image = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=$tx";
 
  return imgbase64($image);
  
@@ -194,7 +200,7 @@ function isMobile() {
 
 function api_token_gen(){
     
-return implode('-', str_split(substr(strtolower(md5(microtime().rand(1000, 9999))), 0, 30), 6));
+return implode('-', str_split(bin2hex(random_bytes(15)), 6));
   
 }
 
@@ -208,7 +214,7 @@ function GenRandomString($length = 10) {
     $charactersLength = strlen($characters);
     $randomString = '';
     for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
+        $randomString .= $characters[random_int(0, $charactersLength - 1)];
     }
     return $randomString;
 }
@@ -230,7 +236,7 @@ function generateNumericOTP($n) {
     $result = ""; 
   
     for ($i = 1; $i <= $n; $i++) { 
-        $result .= substr($generator, (rand()%(strlen($generator))), 1); 
+        $result .= substr($generator, random_int(0, strlen($generator) - 1), 1); 
     } 
   
     // Return result 
