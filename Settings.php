@@ -131,138 +131,52 @@ redirect('','1500');
 
 }
 ?>
-<div class="row mt-1">
-              <div class="col">
-                <div class="card mb-grid card-nblue">
-                <div class="row p-4">
-                <div class="col-md-4 mb-4">
-				<h4 class="text-white">Account Settings</h4><hr class="bg-white">
-<form action="" method="post">
-   
-    <div class="form-group">
-      <label class="text-white">Company Name</label>
-      <input type="text" name="company_name" value="<?php echo $userdata['company_name'];?>" class="form-control form-control-sm" placeholder="Company Name" readonly>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">PAN Number</label>
-      <input type="text" name="pan_no" value="<?php echo $userdata['pan_no'];?>" class="form-control form-control-sm" placeholder="PAN Number" readonly>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">Current Password</label>
-      <input type="text" name="current_pwd" class="form-control form-control-sm" placeholder="Current Password" maxlength="15" required>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">New Password</label>
-      <input type="text" name="new_pwd" class="form-control form-control-sm" placeholder="New Password" maxlength="12" required>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">Confirm New Password</label>
-      <input type="text" name="confirm_new_pwd" class="form-control form-control-sm" placeholder="Confirm New Password" maxlength="12" required>
-    </div>
-	
-	
-    <button type="submit" name="pwdupdate" class="btn bg-white text-dark btn-sm"><i class="fa fa-bolt"></i> Change Password</button>
-    
-</form> 
-				
-			  
-			   
-                </div>
-                <div class="col-md-4 mb-4">
-				<h4 class="text-white">User Profile</h4><hr class="bg-white">
-<form action="" method="post">
-   
-	<div class="form-group">
-      <label class="text-white">Mobile Number</label>
-      <input type="text" name="mobile" value="<?php echo $userdata['mobile'];?>" class="form-control form-control-sm" placeholder="Mobile Number" maxlength="10" onkeypress="return isNumber(event)" required>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">Email Address</label>
-      <input type="email" name="email" value="<?php echo $userdata['email'];?>" class="form-control form-control-sm" placeholder="Email Address" maxlength="50" required>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">Account Number</label>
-      <input type="text" name="account_no" value="<?php echo $account->account_no;?>" class="form-control form-control-sm" placeholder="Account Number" maxlength="34" required>
-    </div>	
-	
-    <div class="form-group">
-      <label class="text-white">Beneficiary Name</label>
-      <input type="text" name="beneficiary_name" value="<?php echo $account->beneficiary_name;?>" class="form-control form-control-sm" placeholder="Beneficiary Name" minlength="5" maxlength="35" required>
-    </div>
-	
-    <div class="form-group">
-      <label class="text-white">IFSC</label>
-      <input type="text" name="ifsc" value="<?php echo $account->ifsc;?>" class="form-control form-control-sm" placeholder="IFSC" minlength="11" maxlength="11" required>
-    </div>
-	
-	
-    <button type="submit" name="userupdate" class="btn bg-white text-dark btn-sm"><i class="fa fa-bolt"></i> Update</button>
-    
-</form> 
-				
-			  
-			   
-                </div>	
-				
-                <div class="col-md-4 mb-4">
-				<h4 class="text-white">Api Credentials</h4><hr class="bg-white">
-<form action="" method="post">
-   
-	<div class="form-group">
-      <label class="text-white">Production Api Token</label>
-      <input type="text" name="token" value="<?php echo $userdata['token'];?>" class="form-control form-control-sm" placeholder="Api Token" readonly>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">Production Secret Key</label>
-      <input type="text" name="secret" value="<?php echo $userdata['secret'];?>" class="form-control form-control-sm" placeholder="Secret Key" readonly>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">Transaction URL</label>
-      <input type="text" name="txn_url" value="<?php echo webdata('socket');?><?php echo base_url();?>/order/process" class="form-control form-control-sm" placeholder="Transaction URL" readonly>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">Transaction Status URL</label>
-      <input type="text" name="txn_status_url" value="<?php echo webdata('socket');?><?php echo base_url();?>/order/status" class="form-control form-control-sm" placeholder="Transaction Status URL" readonly>
-    </div>
-	
-	<div class="form-group">
-      <label class="text-white">Test Transaction URL</label>
-      <input type="text" name="stage" value="<?php echo webdata('socket');?><?php echo base_url();?>/stage/process" class="form-control form-control-sm" placeholder="Test Transaction URL" readonly>
-    </div>
-	
-	<!--div class="form-group">
-      <label class="text-white">Transaction Status Webhook</label>
-      <input type="text" name="txn_status_webhook" value="<?php echo $userdata['txn_status_webhook'];?>" class="form-control form-control-sm" placeholder="Transaction Status Webhook Url">
-    </div-->
-	
-    <!--button type="submit" name="webhookupdate" class="btn bg-white text-dark btn-sm mr-2"><i class="fa fa-bolt"></i> Submit</button-->
-    <button type="submit" name="generate" class="btn bg-white text-dark btn-sm"><i class="fa fa-key"></i> Generate Credentials</button>
-    
-</form> 
-				
-			  
-			   
-                </div>					
-				
-				
-                </div>
-              </div>
-            </div>
-
-            
-            
-          </div>
+<div class="p-cols">
+  <div class="p-stack">
+    <section class="p-card">
+      <header class="p-card-head"><h2>Profile and payout account</h2><p>Where we reach you, and the bank account your settlements go to.</p></header>
+      <form action="" method="post" class="p-form">
+        <div class="p-two">
+          <div class="p-field"><label for="f_company_name">Company name</label><input type="text" id="f_company_name" name="company_name" value="<?php echo htmlspecialchars($userdata['company_name']);?>" maxlength="50" readonly></div>
+          <div class="p-field"><label for="f_pan_no">PAN number</label><input type="text" id="f_pan_no" name="pan_no" value="<?php echo htmlspecialchars($userdata['pan_no']);?>"  readonly></div>
         </div>
-      </div>
+        <div class="p-two">
+          <div class="p-field"><label for="f_mobile">Mobile number</label><input type="tel" id="f_mobile" name="mobile" value="<?php echo htmlspecialchars($userdata['mobile']);?>" maxlength="10" inputmode="numeric" onkeypress="return isNumber(event)" required></div>
+          <div class="p-field"><label for="f_email">Email address</label><input type="email" id="f_email" name="email" value="<?php echo htmlspecialchars($userdata['email']);?>" maxlength="50" required></div>
+        </div>
+        <div class="p-field"><label for="f_account_no">Account number</label><input type="text" id="f_account_no" name="account_no" value="<?php echo htmlspecialchars($account->account_no);?>" maxlength="34" required></div>
+        <div class="p-two">
+          <div class="p-field"><label for="f_beneficiary_name">Beneficiary name</label><input type="text" id="f_beneficiary_name" name="beneficiary_name" value="<?php echo htmlspecialchars($account->beneficiary_name);?>" minlength="5" maxlength="35" required></div>
+          <div class="p-field"><label for="f_ifsc">IFSC</label><input type="text" id="f_ifsc" name="ifsc" value="<?php echo htmlspecialchars($account->ifsc);?>" minlength="11" maxlength="11" required></div>
+        </div>
+        <div class="p-actions"><button type="submit" name="userupdate" class="btn bg-white text-dark">Save profile</button></div>
+      </form>
+    </section>
+    <section class="p-card">
+      <header class="p-card-head"><h2>Change password</h2><p>Use at least 8 characters. Maximum is 12.</p></header>
+      <form action="" method="post" class="p-form">
+        <div class="p-field"><label for="f_current_pwd">Current password</label><input type="password" id="f_current_pwd" name="current_pwd" value="" maxlength="15" autocomplete="current-password" required></div>
+        <div class="p-two">
+          <div class="p-field"><label for="f_new_pwd">New password</label><input type="password" id="f_new_pwd" name="new_pwd" value="" maxlength="12" autocomplete="new-password" required></div>
+          <div class="p-field"><label for="f_confirm_new_pwd">Confirm new password</label><input type="password" id="f_confirm_new_pwd" name="confirm_new_pwd" value="" maxlength="12" autocomplete="new-password" required></div>
+        </div>
+        <div class="p-actions"><button type="submit" name="pwdupdate" class="btn bg-white text-dark">Change password</button></div>
+      </form>
+    </section>
+  </div>
+  <section class="p-card p-card--dark">
+    <header class="p-card-head"><h2>API credentials</h2><p>Use these in your website or app. Keep the secret key private.</p></header>
+    <form action="" method="post" class="p-form">
+      <div class="p-field"><label for="f_token">Production API token</label><div class="p-copyrow"><input type="text" id="f_token" name="token" value="<?php echo htmlspecialchars($userdata['token']);?>"  readonly><button type="button" class="p-copy" data-copy="#f_token">Copy</button></div></div>
+      <div class="p-field"><label for="f_secret">Production secret key</label><div class="p-copyrow"><input type="text" id="f_secret" name="secret" value="<?php echo htmlspecialchars($userdata['secret']);?>"  readonly><button type="button" class="p-copy" data-copy="#f_secret">Copy</button></div></div>
+      <div class="p-field"><label for="f_txn_url">Transaction URL</label><div class="p-copyrow"><input type="text" id="f_txn_url" name="txn_url" value="<?php echo htmlspecialchars(webdata('socket').base_url());?>/order/process"  readonly><button type="button" class="p-copy" data-copy="#f_txn_url">Copy</button></div></div>
+      <div class="p-field"><label for="f_txn_status_url">Transaction status URL</label><div class="p-copyrow"><input type="text" id="f_txn_status_url" name="txn_status_url" value="<?php echo htmlspecialchars(webdata('socket').base_url());?>/order/status"  readonly><button type="button" class="p-copy" data-copy="#f_txn_status_url">Copy</button></div></div>
+      <div class="p-field"><label for="f_stage">Test transaction URL</label><div class="p-copyrow"><input type="text" id="f_stage" name="stage" value="<?php echo htmlspecialchars(webdata('socket').base_url());?>/stage/process"  readonly><button type="button" class="p-copy" data-copy="#f_stage">Copy</button></div></div>
+      <div class="p-actions"><button type="submit" name="generate" class="btn bg-white text-dark" data-confirm="Generate new credentials? Your old token and secret stop working.">Generate new credentials</button></div>
+    </form>
+  </section>
+</div>
+</div></div></div>
 <?php
 require_once('layouts/footer.php');
 ?>

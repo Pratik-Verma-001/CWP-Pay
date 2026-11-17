@@ -74,41 +74,47 @@ redirect('','1500');
 }
 ?>
 
-<div class="row sp-background">
-
-<div class="col-md-4 col-lg-4 d-flex mt-4">
-<div class="card mb-grid w-100 card-nblue">
-<span class="text-white pl-3 pt-3">Account Balance</span>
-<h4 class="text-white pl-3 pt-3"><b>₹<span id="balance"></span></b> 
-<span onclick="getBalance()" id="load"><i class="fas fa-sync-alt fa-xs"></i></span></h4>
-<div class="card-body row">
-<div class="ml-5 mb-2">
-<button class="btn bg-white text-dark btn-sm" data-toggle="modal" data-target="#AddFunds"><i class="fa fa-plus"></i> Add Funds</button>
+<?php
+$start_date = $userdata['start_date'];
+$exp_date = $userdata['expire_date'];
+$days_left = (int)getExpiredays(date('d-m-Y H:i:s'),$exp_date);
+$total_days = (int)getExpiredays($start_date,$exp_date);
+$pct = $total_days>0 ? max(0,min(100,round($days_left/$total_days*100))) : 0;
+$low = ($days_left <= 3);
+?>
+<div class="p-stats">
+  <section class="p-hero">
+    <p class="p-hero-label">Account balance</p>
+    <p class="p-hero-amt"><span>&#8377;</span><b id="balance"><?php echo moneyformat($userdata['balance']);?></b>
+      <button type="button" id="load" class="p-refresh" onclick="getBalance()" aria-label="Refresh balance"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg></button></p>
+    <div class="p-hero-actions">
+      <button type="button" class="btn bg-white text-dark" data-toggle="modal" data-target="#AddFunds">Add funds</button>
+      <a href="Settlement" class="btn p-ghost">Bank settlement</a>
+    </div>
+  </section>
+  <section class="p-card p-plan-card">
+    <p class="p-label">Your plan</p>
+    <p class="p-big <?php echo $low ? 'is-low' : '';?>"><b><?php echo $days_left;?></b> days left</p>
+    <div class="p-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo $pct;?>"><i style="width:<?php echo $pct;?>%"></i></div>
+    <p class="p-sub"><?php echo $low ? 'Renew soon so payments keep working.' : 'Active until '.htmlspecialchars($exp_date).'.';?></p>
+    <a class="p-link-sm" href="plans">View plans</a>
+  </section>
+  <section class="p-card p-bank">
+    <p class="p-label">Add funds by bank transfer to <?php echo htmlspecialchars(webdata('company_name'));?></p>
+    <dl>
+      <dt>Company name</dt><dd><?php echo htmlspecialchars(company_account('name'));?></dd>
+      <dt>Account / IFSC</dt><dd><span id="bank_acc"><?php echo htmlspecialchars(company_account('account'));?> / <?php echo htmlspecialchars(company_account('ifsc'));?></span> <button type="button" class="p-copy" data-copy="#bank_acc">Copy</button></dd>
+    </dl>
+  </section>
 </div>
-<div class="ml-5 mb-2">
-<a href="Settlement" class="btn bg-white text-dark btn-sm"><i class="fa fa-share-square"></i> Bank Settlement</a>
-</div>
-</div>
-</div>
-</div>
-
-<div class="col-md-8 col-lg-8 d-flex mt-4">
-<div class="card mb-grid w-100 card-nblue">
-    <?php
-    $start_date = $userdata['start_date'];
-    $exp_date = $userdata['expire_date'];
-    ?>
-<p class="text-white pl-3 pt-3">Transfer funds to the following account to use <?php echo webdata('company_name');?></p>
-<p class="text-danger pl-3" style="color:red;"><b><?php echo getExpiredays(date('d-m-Y H:i:s'),$exp_date); ?> Days left to Expire</b></p>
-<p class="text-white pl-3"><b class="mr-4">Company Name:</b><b><?php echo company_account('name');?></b></p>
-<p class="text-white pl-3 mb-3"><b class="mr-4">Account Details:</b>
-<b><?php echo company_account('account');?> / <?php echo company_account('ifsc');?></b>
-</p>
-</div>
-</div>
-
-</div>
-<div class="row mt-5">
+<nav class="p-tiles" aria-label="Quick links">
+  <a href="UPIsSettings"><span>UPI details</span><small>Set where money arrives</small></a>
+  <a href="MyQRCode"><span>My QR code</span><small>Print or share</small></a>
+  <a href="Developer"><span>Developer</span><small>API and test checkout</small></a>
+  <a href="Settings"><span>Settings</span><small>Profile and credentials</small></a>
+</nav>
+<h2 class="p-section-title">Today's transactions</h2>
+<div class="row mt-2">
               <div class="col">
                 <div class="card mb-grid">
                   <div class="table-responsive-md">
@@ -235,7 +241,7 @@ require_once('layouts/footer.php');
 <script>
 function getBalance(){
     
-document.getElementById("load").innerHTML = "<img src='assets/img/animated_spinner.webp' width='20' width=''20>";        
+document.getElementById("load").innerHTML = "<img src='assets/img/animated_spinner.webp' width='20' alt=''>";        
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -243,10 +249,10 @@ document.getElementById("load").innerHTML = "<img src='assets/img/animated_spinn
       var obj = JSON.parse(this.responseText);
       
       if(obj.status=='SUCCESS'){
-      document.getElementById("load").innerHTML = "<i class=\"fas fa-sync-alt fa-sm\"></i>"; 
+      document.getElementById("load").innerHTML = "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7\"/></svg>"; 
       document.getElementById("balance").innerHTML = obj.balance;        
       }else{
-      document.getElementById("load").innerHTML = "<i class=\"fas fa-sync-alt fa-sm\"></i>"; 
+      document.getElementById("load").innerHTML = "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7\"/></svg>"; 
       document.getElementById("balance").innerHTML = 'Error, Try Agian!';        
       }   
         

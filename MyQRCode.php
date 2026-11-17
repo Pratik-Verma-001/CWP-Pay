@@ -44,57 +44,29 @@ redirect('','1500');
 }
 
 ?>
-<div class="row mt-1">
-              <div class="col">
-                <div class="card mb-grid card-nblue">
-                <div class="row p-4">
-
-                <div class="col-md-4 mb-4">
-				<h4 class="text-white"><b>My QR Code</b></h4><hr class="bg-white">
-
-				<div class="card" style="border-radius: 10px;">
-				<!-- begin::Title-->
-				<div class="text-center mt-4">
-					<!-- begin::User-->
-					<img src="../assets/img/bhimupi.png" width="300" class="img-fluid"><br>
-					<h5 class="mt-2" style="font-weight: bold;"><b><?php echo get_upi_id($userdata['id'],"upi_name");?></b></h5>
-					<div class="pl-5 pr-5"> <hr class="bg-dark">
-					<img src="<?=my_qr_code($userdata['id']);?>" width="200" class="img-fluid"><br>
-					<div class="mt-2" style="font-weight: bold;">Scan & Pay Using Any App</div>
-					</div>
-					<div class="mb-3">
-					<img src="../assets/img/upiapps.png" width="300" class="img-fluid">
-					</div>
-					
-	            </div>
-	<!-- End::Card-->
-	<!-- begin::Card-->
+<div class="p-qrpage">
+  <section class="p-card p-qrcard" id="qr-print">
+    <img class="p-qr-bhim" src="../assets/img/bhimupi.png" alt="BHIM UPI">
+    <h2><?php echo htmlspecialchars(get_upi_id($userdata['id'],"upi_name"));?></h2>
+    <div class="p-qr-img"><img src="<?=my_qr_code($userdata['id']);?>" alt="Your UPI QR code"></div>
+    <p class="p-qr-cap">Scan and pay using any UPI app</p>
+    <img class="p-qr-apps" src="../assets/img/upiapps.png" alt="Supported UPI apps">
+  </section>
+  <aside class="p-card p-qrside">
+    <header class="p-card-head"><h2>Share your QR</h2><p>Put it at your counter or send it to customers.</p></header>
+    <div class="p-copyrow"><input type="text" id="qr_upi" value="<?php echo htmlspecialchars(get_upi_id($userdata['id'],"upi_id"));?>" readonly><button type="button" class="p-copy" data-copy="#qr_upi">Copy UPI ID</button></div>
+    <div class="p-actions"><button type="button" class="btn bg-white text-dark" onclick="window.print()">Print QR code</button></div>
+  </aside>
 </div>
-
-	<!--div id="previewImage"></div--> 			  
-			   
-                </div>					
-				
-                </div>
-                
-              </div>
-            </div>
-
-            
-            
-          </div>
-        </div>
-<?php }else{ ?>        
-<div class="col-md-12 col-lg-12 d-flex mt-4">
-<div class="card mb-grid w-100 card-nblue text-center">
-<h2 class="mt-3 text-white"><b>Accept Payments Directly to your Bank Account</b></h2>
-<h3 class="text-white"><b>At 0% Transaction Fee</b></h3>
-<button class="btn btn-success btn-sm text-white" onclick="window.open('https://wa.me/91<?=support('mobile')?>?text=<?=urlencode("I'm interested in your UPI Smart Gateway")?>');">Activate UPI Smart Gateway</button>
-<div class="card card-custom p-2"><?=webdata("notification")?></div>
+<?php }else{ ?>
+<div class="p-cta">
+  <h2>Accept payments directly in your bank account</h2>
+  <p>0% transaction fee. Ask us to switch on the UPI Smart Gateway for your account.</p>
+  <button type="button" class="btn bg-white text-dark" onclick="window.open('https://wa.me/91<?=support('mobile')?>?text=<?=urlencode("I'm interested in your UPI Smart Gateway")?>');">Activate on WhatsApp</button>
+  <?php if(webdata("notification")!=""){ ?><div class="p-cta-note"><?=webdata("notification")?></div><?php } ?>
 </div>
-</div>        
-<?php } ?>        
-      </div>
+<?php } ?>
+</div></div></div>
 <?php
 require_once('layouts/footer.php');
 ?>

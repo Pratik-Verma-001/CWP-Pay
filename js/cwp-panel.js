@@ -12,6 +12,27 @@
     tr.appendChild(td); body.appendChild(tr);
   });
 
+  /* copy buttons */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('.p-copy') : null;
+    if (!b) return;
+    var src = document.querySelector(b.getAttribute('data-copy'));
+    if (!src) return;
+    var text = ('value' in src && src.value !== undefined && src.tagName === 'INPUT') ? src.value : src.textContent.trim();
+    var done = function () {
+      var old = b.textContent; b.textContent = 'Copied'; b.classList.add('is-done');
+      setTimeout(function () { b.textContent = old; b.classList.remove('is-done'); }, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () {});
+    } else if (src.select) { src.select(); try { document.execCommand('copy'); done(); } catch (x) {} }
+  });
+  /* confirm before risky buttons */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('[data-confirm]') : null;
+    if (b && !window.confirm(b.getAttribute('data-confirm'))) e.preventDefault();
+  });
+
   var side = document.getElementById('p-side');
   if (!side) return;
   var scrim = document.querySelector('.p-scrim');
