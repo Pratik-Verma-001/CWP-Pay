@@ -60,7 +60,7 @@ if(sql_num_rows($res)==''){
 $rand = GenRandomString(3).time();  
 $pwd = pwd_hash($pan_no);
 $query = sql_query("INSERT INTO tb_partner (`login_id`, `login_pwd`, `name`, `company_name`, `mobile`, `email`, `pan_no`, `uid_no`, `status`, `payid`, `password_bckup`) 
-VALUES ('".$pan_no."','".$pwd."','".$name."','".$company_name."','".$mobile."','".$email."','".$pan_no."','".$uid_no."','active','".$payid."','".$pan_no."')");
+VALUES ('".$pan_no."','".$pwd."','".$name."','".$company_name."','".$mobile."','".$email."','".$pan_no."','".$uid_no."','active','".$payid."','')");
 if($query){
      return ['status'=>'su'];
 

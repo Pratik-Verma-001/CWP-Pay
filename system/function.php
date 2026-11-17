@@ -48,8 +48,24 @@ return mysqli_real_escape_string($conn,$str);
 
 
 function pwd_hash($password){
-return password_hash($password, PASSWORD_DEFAULT);
+return password_hash($password, PASSWORD_DEFAULT, ['cost'=>12]);
 }
+/* Re-hash an old hash (lower cost / old algorithm) after a successful login. */
+function pwd_upgrade($id,$password,$hash){
+if(password_needs_rehash($hash, PASSWORD_DEFAULT, ['cost'=>12])){
+sql_query("UPDATE `tb_partner` SET login_pwd='".db_escape(pwd_hash($password))."' WHERE id='".(int)$id."' ");
+}
+}
+/* Login throttle: 5 wrong tries => 10 minute lock (per session + per IP file-less via session). */
+function login_sess(){if(session_status()!==PHP_SESSION_ACTIVE)@session_start();}
+function login_locked(){login_sess();
+return !empty($_SESSION['lg_lock']) && $_SESSION['lg_lock']>time();
+}
+function login_fail(){login_sess();
+$_SESSION['lg_fail']=($_SESSION['lg_fail']??0)+1;
+if($_SESSION['lg_fail']>=5){$_SESSION['lg_lock']=time()+600;$_SESSION['lg_fail']=0;}
+}
+function login_ok(){login_sess();unset($_SESSION['lg_fail'],$_SESSION['lg_lock']);}
 
 function pwd_verify($password,$hash){
 return password_verify($password,$hash);
@@ -301,10 +317,10 @@ function SendMail($email_to, $email_subject, $email_message) {
 
 
 function hash_encrypt($data, $password) {
-	$iv = substr(sha1(mt_rand()), 0, 16);
+	$iv = bin2hex(random_bytes(8));
 	$password = sha1($password);
 
-	$salt = sha1(mt_rand());
+	$salt = bin2hex(random_bytes(20));
 	$saltWithPassword = hash('sha256', $password.$salt);
 
 	$encrypted = openssl_encrypt(

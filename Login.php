@@ -27,11 +27,14 @@ if(isset($_POST['login']) && !empty($_POST['login_id']) && !empty($_POST['login_
 $login_id = safe_str($_POST['login_id']);
 $login_pwd = safe_str($_POST['login_pwd']);
 $login_otp = safe_str($_POST['login_otp']);
+if(login_locked()){echo '<script>swal("Too many attempts", "Try again after 10 minutes.", "error");</script>';redirect('','1500');exit;}
 
 $res = sql_query("SELECT * FROM `tb_partner` WHERE login_id='".$login_id."' AND login_otp='".$login_otp."' AND status='active' ");
 $result = sql_fetch_array($res);
 $pwd = $result['login_pwd'];
 if(sql_num_rows($res)>0 && pwd_verify($login_pwd,$pwd) && $result['status']=="active" && $result['login_otp']==$login_otp){
+login_ok();
+pwd_upgrade($result['id'],$login_pwd,$pwd);
 $rand = GenRandomString(8);    
 sql_query("UPDATE `tb_partner` SET login_otp='".$rand."' WHERE id='".$result['id']."' ");
 $_SESSION['is_login'] = 'YES';	
@@ -41,6 +44,7 @@ $_SESSION['is_otp'] = $rand;
 echo '<script>swal("Successfully!", "Login your Account!", "success");</script>';	
 redirect('Dashboard','1500');
 }else{
+login_fail();
 echo '<script>swal("Alert!", "Credentials is invalid!", "error");</script>';
 redirect('','1500');
 }	

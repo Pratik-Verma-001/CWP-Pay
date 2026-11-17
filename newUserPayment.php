@@ -43,7 +43,7 @@ redirect('CreateAccount?paystatus=failed','1');
 
 
 function sendCred($data){
-$rand = safe_str($data['password_bckup']);
+$rand = "Your PAN number (change it after first login)";
 $pan_no = safe_str($data['pan_no']);
 $name = strip_tags($data['name']);
 $company_name = strip_tags($data['company_name']);

@@ -10,7 +10,9 @@ $res = sql_query("SELECT * FROM `tb_partner` WHERE login_id='".$login_id."' AND 
 $result = sql_fetch_array($res);
 $pwd = $result['login_pwd'];
 
+if(login_locked()){echo json_encode(array("status"=>false,"msg"=>"Too many attempts. Try after 10 minutes."));exit;}
 if(sql_num_rows($res)>0 && $result['status']=="active" && pwd_verify($lpwd,$pwd)){
+pwd_upgrade($result['id'],$lpwd,$pwd);
 //$rand = GenRandomString(8);
 $rand = generateNumericOTP(8);
 //$msg = "Payment Gateway Login Verification code is: {#var#}, and is valid for 15 minutes. never share with anyone. Thank You - {#var#} EBRAN SEKH";
@@ -54,6 +56,7 @@ function send_whatsapp_otp($mobile, $message){
     curl_close($ch);
     return $data;
 }
+if($arr['status']!==true && !empty($_POST['lid'])){ login_fail(); }
 if($arr['status']===true){
     send_whatsapp_otp($result['mobile'], $msg);
 }
