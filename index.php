@@ -84,16 +84,18 @@ $wa = preg_replace('/\D/', '', support('mobile'));
 <section class="section apps">
   <div class="wrap">
     <h2>Customers pay with the app they already use.</h2>
-    <ul class="apps-list">
-      <li><img src="images/bank_gpay.jpg" alt="Google Pay"></li>
-      <li><img src="images/bank_phonepe.jpg" alt="PhonePe"></li>
-      <li><img src="images/bank_bhim_upi.jpg" alt="BHIM UPI"></li>
-      <li><img src="images/bank_freecharge.jpg" alt="Freecharge"></li>
-      <li><img src="images/bank_sbi.jpg" alt="SBI Pay"></li>
-      <li><img src="images/bank_airtel.jpg" alt="Airtel Thanks"></li>
-      <li><img src="images/bank_amazon_pay.jpg" alt="Amazon Pay"></li>
-      <li><img src="images/bank_payzapp.jpg" alt="PayZapp"></li>
-    </ul>
+    <div class="apps-marquee">
+      <ul class="apps-list">
+        <li><img src="images/bank_gpay.jpg" alt="Google Pay" draggable="false"></li>
+        <li><img src="images/bank_phonepe.jpg" alt="PhonePe" draggable="false"></li>
+        <li><img src="images/bank_bhim_upi.jpg" alt="BHIM UPI" draggable="false"></li>
+        <li><img src="images/bank_freecharge.jpg" alt="Freecharge" draggable="false"></li>
+        <li><img src="images/bank_sbi.jpg" alt="SBI Pay" draggable="false"></li>
+        <li><img src="images/bank_airtel.jpg" alt="Airtel Thanks" draggable="false"></li>
+        <li><img src="images/bank_amazon_pay.jpg" alt="Amazon Pay" draggable="false"></li>
+        <li><img src="images/bank_payzapp.jpg" alt="PayZapp" draggable="false"></li>
+      </ul>
+    </div>
     <small>Logos belong to their owners. All of these apps support BHIM UPI.</small>
   </div>
 </section>

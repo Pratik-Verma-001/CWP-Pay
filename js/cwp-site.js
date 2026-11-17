@@ -17,6 +17,25 @@
   document.querySelectorAll('.nav a').forEach(function (a) { a.addEventListener('click', function () { setNav(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setNav(false); });
 
+  /* apps: duplicate the logos once so the CSS slide loops without a jump */
+  var appsList = document.querySelector('.apps-list');
+  if (appsList && !reduce) {
+    Array.prototype.slice.call(appsList.children).forEach(function (li) {
+      var c = li.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      c.querySelector('img').alt = '';
+      appsList.appendChild(c);
+    });
+  }
+
+  /* block long-press menu / drag on the public site (forms stay usable) */
+  ['contextmenu', 'dragstart'].forEach(function (evt) {
+    document.addEventListener(evt, function (e) {
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+      e.preventDefault();
+    });
+  });
+
   /* ledger: payments arrive, get matched */
   var rows = document.getElementById('ledger-rows');
   var totalEl = document.getElementById('ledger-total');

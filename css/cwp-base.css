@@ -27,6 +27,9 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+/* no blue tap flash / rectangle on touch */
+* { -webkit-tap-highlight-color: transparent; }
+a, button, summary, label, [role="button"], [tabindex] { -webkit-tap-highlight-color: transparent; outline: none; }
 
 .cwp-body {
   margin: 0;
